@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Sign up</h1>
+<div mat-dialog-content>
+    <form [formGroup]="registerForm">
+        <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input formControlName="firstName" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input formControlName="lastName" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Authorities</mat-label>
+            <mat-select formControlName="authorities" placeholder="Authorities" multiple>
+                <mat-option value="ROLE_TENANT">Tenant</mat-option>
+                <mat-option value="ROLE_OWNER">Owner</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="registerUser()">Sign up</button>
+</div>
