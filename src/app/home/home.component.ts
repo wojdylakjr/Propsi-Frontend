@@ -1,5 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { IUser } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +9,22 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnChanges {
-  message = "";
+  user$: Observable<IUser>
 
 
 
   constructor(private authService: AuthService) {
-    this.message = authService.user ?? '';
+    this.user$ = authService.user;
     // this.authService.userMail.subscribe({ next: (v) => { debugger; this.message = v } });
   }
 
-  get isSidebarVisible(): string {
-    return this.authService.user ?? '';
-  }
 
 
   ngOnInit(): void {
     console.log(" on init");
-    this.authService.userMail.subscribe({ next: (v) => { this.message = v } });
+    if (this.authService.isLoggedIn()) {
+      this.authService.getCurrentUser()
+    }
     // this.authService.getCurrentUser().subscribe({
     //   next: (response: any) => {
     //     this.message = response.email;

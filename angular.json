@@ -107,5 +107,8 @@
             }
         }
     },
-    "defaultProject": "Propsi_frontend"
+    "defaultProject": "Propsi_frontend",
+    "cli": {
+      "analytics": false
+    }
 }

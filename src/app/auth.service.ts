@@ -3,35 +3,22 @@ import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt"
 import * as moment from 'moment';
 import { Subject } from "rxjs";
+import { IUser } from "./models/user.model";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    user?: string;
-
     jwtHelper = new JwtHelperService;
 
-    userMail: Subject<string> = new Subject<string>();
+    user: Subject<IUser> = new Subject<IUser>();
 
     constructor(private http: HttpClient) {
-        this.userMail.subscribe((value) => {
-            this.user = value
-        });
     }
 
     loginUser(data: any) {
-        this.http.post<any>("http://localhost:8080/login", data).subscribe({
-            next: (response: any) => {
-                this.setSession(response.access_token);
-                this.getCurrentUser();
-                alert("User login succsefully");
-            },
-            error: () => {
-                console.log('error')
-            }
-        });
+        return this.http.post<any>("http://localhost:8080/login", data)
     }
 
     setSession(access_token: string) {
@@ -46,16 +33,20 @@ export class AuthService {
         // this.isLoggedIn();
     }
 
+    //TODO: fix backend method
     logout() {
         localStorage.removeItem('access_token');
         localStorage.removeItem("expires_at");
         return this.http.get("http://localhost:8080/logout").subscribe({
             next: (response: any) => {
-                this.userMail.next('');
+                this.user.next({});
                 localStorage.removeItem("access_token");
                 localStorage.removeItem("expires_at");
             },
             error: () => {
+                this.user.next({});
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("expires_at");
                 alert('couldnt log out')
             }
         });;
@@ -66,9 +57,7 @@ export class AuthService {
         return moment().isBefore(this.getExpiration());
     }
 
-    isLoggedOut() {
-        return !this.isLoggedIn();
-    }
+
 
     getExpiration() {
         const expiration = localStorage.getItem("expires_at")!;
@@ -79,14 +68,25 @@ export class AuthService {
     getCurrentUser() {
         return this.http.get("http://localhost:8080/api/account").subscribe({
             next: (response: any) => {
-                this.userMail.next(response.email);
+                this.user.next(response);
             },
             error: () => {
-                alert('couldnt log out')
+                alert('couldnt get cuurent user')
             }
         });;;
     }
 
+
+    intializeCurrentUser() {
+        this.http.get("http://localhost:8080/api/account").subscribe({
+            next: (response: any) => {
+                this.user.next(response);
+            },
+            error: () => {
+                alert('couldnt get cuurent user')
+            }
+        });;;
+    }
     //TODO: USUNAC 
     testOwner() {
         return this.http.get("http://localhost:8080/api/testOwner");

@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
@@ -37,7 +37,7 @@ import { AuthInterceptor } from './auth.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule, 
+    MatIconModule,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -48,9 +48,9 @@ import { AuthInterceptor } from './auth.interceptor';
     HttpClientModule
   ],
   providers: [{
-     provide: HTTP_INTERCEPTORS,
-     useClass: AuthInterceptor,
-     multi:true
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -12,7 +13,7 @@ import { AuthService } from '../auth.service';
 export class LoginDialogComponent implements OnInit {
 
   registerForm !: FormGroup;
-  constructor(private formBuilder: FormBuilder, private api: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private api: AuthService, private router: Router, private dialogRef: MatDialogRef<LoginDialogComponent>) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -25,19 +26,21 @@ export class LoginDialogComponent implements OnInit {
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.api.loginUser(this.registerForm.value)
-      // .subscribe({
-      //   next: (response) => {
-      //     this.api.setSession(response.access_token);
-      //     console.log(response);
-      //     // localStorage.setItem('access_token', response.access_token);
-      //     // console.log(localStorage.getItem('access_token'));
-      //     alert("User login succsefully");
-
-      //   },
-      //   error: () => {
-      //     alert("Error while logging");
-      //   }
-      // })
+        // this.dialogRef.close()
+        .subscribe({
+          next: (response) => {
+            this.api.setSession(response.access_token);
+            this.api.intializeCurrentUser();
+            console.log(response);
+            // localStorage.setItem('access_token', response.access_token);
+            // console.log(localStorage.getItem('access_token'));
+            console.log("User login succsefully");
+            this.dialogRef.close()
+          },
+          error: () => {
+            alert("Error while logging");
+          }
+        })
     }
   }
 }
