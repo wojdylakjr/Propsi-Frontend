@@ -12,7 +12,8 @@ export class AuthService {
 
     jwtHelper = new JwtHelperService;
 
-    user: Subject<IUser> = new Subject<IUser>();
+    private _user:IUser = {};
+    readonly user: Subject<IUser> = new Subject<IUser>();
 
     constructor(private http: HttpClient) {
     }
@@ -66,21 +67,22 @@ export class AuthService {
     }
 
     getCurrentUser() {
-        return this.http.get("http://localhost:8080/api/account").subscribe({
-            next: (response: any) => {
-                this.user.next(response);
-            },
-            error: () => {
-                alert('couldnt get cuurent user')
-            }
-        });;;
+        // return this.http.get("http://localhost:8080/api/account").subscribe({
+        //     next: (response: any) => {
+        //         this.user.next(response);
+        //     },
+        //     error: () => {
+        //         alert('couldnt get cuurent user')
+        //     }
+        // });;;
     }
 
 
     intializeCurrentUser() {
         this.http.get("http://localhost:8080/api/account").subscribe({
             next: (response: any) => {
-                this.user.next(response);
+                this._user = response;
+                this.user.next(this._user);
             },
             error: () => {
                 alert('couldnt get cuurent user')

@@ -9,12 +9,12 @@ import { IUser } from '../models/user.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnChanges {
-  user$: Observable<IUser>
+  user: IUser = {};
 
 
 
   constructor(private authService: AuthService) {
-    this.user$ = authService.user;
+    
     // this.authService.userMail.subscribe({ next: (v) => { debugger; this.message = v } });
   }
 
@@ -22,9 +22,11 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log(" on init");
-    if (this.authService.isLoggedIn()) {
-      this.authService.getCurrentUser()
-    }
+    this.authService.user.subscribe(user => {this.user = user} )
+    // if (this.authService.isLoggedIn()) {
+    //   this.user$ = authService.user;
+    //   // this.authService.getCurrentUser()
+    // }
     // this.authService.getCurrentUser().subscribe({
     //   next: (response: any) => {
     //     this.message = response.email;
