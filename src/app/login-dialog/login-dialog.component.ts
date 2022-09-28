@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -26,14 +26,11 @@ export class LoginDialogComponent implements OnInit {
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.api.loginUser(this.registerForm.value)
-        // this.dialogRef.close()
         .subscribe({
           next: (response) => {
             this.api.setSession(response.access_token);
             this.api.intializeCurrentUser();
             console.log(response);
-            // localStorage.setItem('access_token', response.access_token);
-            // console.log(localStorage.getItem('access_token'));
             console.log("User login succsefully");
             this.dialogRef.close()
           },

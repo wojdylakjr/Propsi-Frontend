@@ -1,10 +1,13 @@
-<!-- //TODO poprawic ten warunek -->
+<!-- //TODO h2oh2rawic ten warunek -->
 <div *ngIf=" user.email">
     <h1>Hi {{user.email}}</h1>
-    <p> {{user | json }}</p>
+    <h2>Id: {{user.id }}</h2>
+    <h2>First name: {{user.firstName }}</h2>
+    <h2>Last name: {{user.lastName }}</h2>
+    <h2>Email: {{user.email }}</h2>
+    <h2>Authorities: {{user.authorities }}</h2>
 </div>
 
-
-<ng-template #notLoggedIn>
-    <h1>No user is looged in</h1>
-</ng-template>
+<div *ngIf="!user.email">
+    <h1>No user is looged in </h1>
+</div>

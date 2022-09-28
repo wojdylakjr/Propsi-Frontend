@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt"
 import * as moment from 'moment';
 import { Subject } from "rxjs";
-import { IUser } from "./models/user.model";
+import { IUser } from "../models/user.model";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthService {
 
     jwtHelper = new JwtHelperService;
 
-    private _user:IUser = {};
+    private _user: IUser = {};
     readonly user: Subject<IUser> = new Subject<IUser>();
 
     constructor(private http: HttpClient) {
@@ -64,17 +64,6 @@ export class AuthService {
         const expiration = localStorage.getItem("expires_at")!;
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
-    }
-
-    getCurrentUser() {
-        // return this.http.get("http://localhost:8080/api/account").subscribe({
-        //     next: (response: any) => {
-        //         this.user.next(response);
-        //     },
-        //     error: () => {
-        //         alert('couldnt get cuurent user')
-        //     }
-        // });;;
     }
 
 
