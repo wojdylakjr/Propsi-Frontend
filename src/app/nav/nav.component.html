@@ -9,8 +9,7 @@
         <button mat-raised-button color="warn" (click)="openRegisterDialog()">Register</button>
     </div>
     <div *ngIf="user.email">
-        <button mat-raised-button color="warn" (click)="testOwner()">test owner</button>
-        <button mat-raised-button color="warn" (click)="testTenant()">test tenant</button>
+        <app-user-menu></app-user-menu>
         <button mat-raised-button color="warn" (click)="logout()">logout</button>
     </div>
 </mat-toolbar>

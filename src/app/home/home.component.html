@@ -6,6 +6,8 @@
     <h2>Last name: {{user.lastName }}</h2>
     <h2>Email: {{user.email }}</h2>
     <h2>Authorities: {{user.authorities }}</h2>
+    <h2>Owners: {{user.owners | json}}</h2>
+    <h2>Tenants: {{user.tenants | json}}</h2>
 </div>
 
 <div *ngIf="!user.email">

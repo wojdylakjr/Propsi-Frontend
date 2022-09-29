@@ -20,8 +20,9 @@
         <mat-form-field appearance="fill">
             <mat-label>Authorities</mat-label>
             <mat-select formControlName="authorities" placeholder="Authorities" multiple>
-                <mat-option value="ROLE_TENANT">Tenant</mat-option>
-                <mat-option value="ROLE_OWNER">Owner</mat-option>
+                <mat-option value={{authority.Tenant}}>{{authority.Tenant}}</mat-option>
+                <mat-option value={{authority.Owner}}>{{authority.Owner}}</mat-option>
+                <mat-option value={{authority.Admin}}>{{authority.Admin}}</mat-option>
             </mat-select>
         </mat-form-field>
     </form>

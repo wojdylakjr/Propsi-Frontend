@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
@@ -25,6 +26,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     LoginDialogComponent,
     NavComponent,
     HomeComponent,
-    SidenavComponent
+    SidenavComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatListModule,
     MatSidenavModule,
+    MatMenuModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule

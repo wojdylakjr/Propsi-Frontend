@@ -1,0 +1,20 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Account</button>
+    <button mat-menu-item [matMenuTriggerFor]="owners">Owners</button>
+    <button mat-menu-item [matMenuTriggerFor]="tenants">Tenants</button>
+</mat-menu>
+
+<mat-menu #owners="matMenu">
+    <button mat-menu-item>Birds</button>
+    <button mat-menu-item>Mammals</button>
+</mat-menu>
+
+<mat-menu #tenants="matMenu">
+    <button mat-menu-item>Insects</button>
+    <button mat-menu-item>Molluscs</button>
+    <button mat-menu-item>Crustaceans</button>
+    <button mat-menu-item>Corals</button>
+</mat-menu>

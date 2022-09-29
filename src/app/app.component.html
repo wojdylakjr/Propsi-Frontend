@@ -1,5 +1,9 @@
 <app-nav></app-nav>
-<app-sidenav></app-sidenav>
-<main>
-    <router-outlet></router-outlet>
-</main>
+<mat-drawer-container>
+    <mat-drawer mode="side" opened="true" color="primary">
+        <app-sidenav>sidenav</app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Authority } from '../models/authorities.enum';
 import { RegisterService } from './register.service';
+
 
 @Component({
   selector: 'app-register-dialog',
@@ -10,7 +12,9 @@ import { RegisterService } from './register.service';
 })
 export class RegisterDialogComponent implements OnInit {
 
+  authority = Authority;
   registerForm !: FormGroup;
+
   constructor(private formBuilder: FormBuilder, private api: RegisterService, private dialogRef: MatDialogRef<RegisterDialogComponent>) { }
 
   ngOnInit(): void {
@@ -23,6 +27,7 @@ export class RegisterDialogComponent implements OnInit {
     })
   }
   registerUser() {
+    console.log(Authority.Admin);
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.api.registerUser(this.registerForm.value)
