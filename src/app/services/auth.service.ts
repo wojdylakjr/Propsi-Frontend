@@ -4,6 +4,7 @@ import { JwtHelperService } from "@auth0/angular-jwt"
 import * as moment from 'moment';
 import { Subject } from "rxjs";
 import { IUser } from "../models/user.model";
+import { UserManagementService } from "./user.management.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +13,9 @@ export class AuthService {
 
     jwtHelper = new JwtHelperService;
 
-    private _user: IUser = {};
-    readonly user: Subject<IUser> = new Subject<IUser>();
 
-    constructor(private http: HttpClient) {
+
+    constructor(private http: HttpClient, private userService: UserManagementService) {
     }
 
     loginUser(data: any) {
@@ -31,7 +31,6 @@ export class AuthService {
         console.log(expiresAt);
         localStorage.setItem('access_token', access_token);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt));
-        // this.isLoggedIn();
     }
 
     //TODO: fix backend method
@@ -40,12 +39,12 @@ export class AuthService {
         localStorage.removeItem("expires_at");
         return this.http.get("http://localhost:8080/logout").subscribe({
             next: (response: any) => {
-                this.user.next({});
+                this.userService.cleanAfterLogout();
                 localStorage.removeItem("access_token");
                 localStorage.removeItem("expires_at");
             },
             error: () => {
-                this.user.next({});
+                this.userService.cleanAfterLogout();
                 localStorage.removeItem("access_token");
                 localStorage.removeItem("expires_at");
                 alert('couldnt log out')
@@ -67,17 +66,17 @@ export class AuthService {
     }
 
 
-    intializeCurrentUser() {
-        this.http.get("http://localhost:8080/api/account").subscribe({
-            next: (response: any) => {
-                this._user = response;
-                this.user.next(this._user);
-            },
-            error: () => {
-                alert('couldnt get cuurent user')
-            }
-        });;;
-    }
+    // intializeCurrentUser() {
+    //     this.http.get("http://localhost:8080/api/account").subscribe({
+    //         next: (response: any) => {
+    //             this._user = response;
+    //             this.user.next(this._user);
+    //         },
+    //         error: () => {
+    //             console.log('couldnt get cuurent user in home init')
+    //         }
+    //     });;;
+    // }
     //TODO: USUNAC 
     testOwner() {
         return this.http.get("http://localhost:8080/api/testOwner");

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { IOwner } from '../models/owner.model';
+import { ITenant } from '../models/tenant.model';
+import { UserManagementService } from '../services/user.management.service';
 // import {MatSideList} from '@angular/material'
 
 @Component({
@@ -9,15 +12,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  options = this._formBuilder.group({
-    bottom: 0,
-    fixed: false,
-    top: 0,
-  });
+  owner: IOwner = {};
+  tenant: ITenant = {};
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {
+    this.userService.owner.subscribe(owner => { this.owner = owner });
+    this.userService.tenant.subscribe(tenant => { this.tenant = tenant });
   }
 
 }

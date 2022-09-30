@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
+import { UserManagementService } from '../services/user.management.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthService } from '../auth/auth.service';
 export class LoginDialogComponent implements OnInit {
 
   registerForm !: FormGroup;
-  constructor(private formBuilder: FormBuilder, private api: AuthService, private router: Router, private dialogRef: MatDialogRef<LoginDialogComponent>) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userService: UserManagementService, private router: Router, private dialogRef: MatDialogRef<LoginDialogComponent>) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -25,11 +26,11 @@ export class LoginDialogComponent implements OnInit {
   loginUser() {
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
-      this.api.loginUser(this.registerForm.value)
+      this.authService.loginUser(this.registerForm.value)
         .subscribe({
           next: (response) => {
-            this.api.setSession(response.access_token);
-            this.api.intializeCurrentUser();
+            this.authService.setSession(response.access_token);
+            this.userService.intializeCurrentUser();
             console.log(response);
             console.log("User login succsefully");
             this.dialogRef.close()

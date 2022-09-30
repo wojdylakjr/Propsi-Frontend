@@ -2,19 +2,27 @@
     <mat-icon>account_circle</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>Account</button>
-    <button mat-menu-item [matMenuTriggerFor]="owners">Owners</button>
-    <button mat-menu-item [matMenuTriggerFor]="tenants">Tenants</button>
+    <p mat-menu-item>Hi {{user.firstName}}</p>
+    <!-- <p mat-menu-item>{{user.email}}</p> -->
+    <div *ngIf=" user.authorities?.includes(authority.Admin)">
+        <button mat-menu-item>Account {{user.email}}</button>
+    </div>
+
+    <div *ngIf=" user.authorities?.includes(authority.Owner)">
+        <button mat-menu-item [matMenuTriggerFor]="owners">Choose owner's account</button>
+    </div>
+
+    <div *ngIf=" user.authorities?.includes(authority.Tenant)">
+        <button mat-menu-item [matMenuTriggerFor]="tenants">Choose tenant's account</button>
+    </div>
+
+
 </mat-menu>
 
 <mat-menu #owners="matMenu">
-    <button mat-menu-item>Birds</button>
-    <button mat-menu-item>Mammals</button>
+    <button mat-menu-item *ngFor="let owner of user.owners" (click)="initializeOwner(owner)">{{owner.name}}</button>
 </mat-menu>
 
 <mat-menu #tenants="matMenu">
-    <button mat-menu-item>Insects</button>
-    <button mat-menu-item>Molluscs</button>
-    <button mat-menu-item>Crustaceans</button>
-    <button mat-menu-item>Corals</button>
+    <button mat-menu-item *ngFor="let tenant of user.tenants " (click)="initializeTenant(tenant) ">{{tenant.name}}</button>
 </mat-menu>

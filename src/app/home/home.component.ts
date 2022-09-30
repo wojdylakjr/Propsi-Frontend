@@ -1,7 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { IUser } from '../models/user.model';
+import { UserManagementService } from '../services/user.management.service';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,12 @@ export class HomeComponent implements OnInit {
   user: IUser = {};
 
 
-  constructor(private authService: AuthService) {
+  constructor(private userService: UserManagementService) {
   }
 
 
   ngOnInit(): void {
-    this.authService.intializeCurrentUser();
-    this.authService.user.subscribe(user => { this.user = user })
+    this.userService.intializeCurrentUser();
+    this.userService.user.subscribe(user => { this.user = user })
   }
 }

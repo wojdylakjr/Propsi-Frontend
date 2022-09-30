@@ -9,7 +9,7 @@
         <button mat-raised-button color="warn" (click)="openRegisterDialog()">Register</button>
     </div>
     <div *ngIf="user.email">
-        <app-user-menu></app-user-menu>
+        <app-user-menu [user]="user"></app-user-menu>
         <button mat-raised-button color="warn" (click)="logout()">logout</button>
     </div>
 </mat-toolbar>
