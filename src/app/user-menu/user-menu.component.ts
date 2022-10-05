@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Authority } from '../models/authorities.enum';
 import { IOwner } from '../models/owner.model';
 import { ITenant } from '../models/tenant.model';
@@ -15,7 +16,7 @@ export class UserMenuComponent implements OnInit {
   @Input() user: IUser = {};
   authority = Authority;
 
-  constructor(private userService: UserManagementService) { }
+  constructor(private userService: UserManagementService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,12 +25,14 @@ export class UserMenuComponent implements OnInit {
     console.log(owner);
     this.userService.setEmptyTenantProfile();
     this.userService.setOwner(owner);
+    this._router.navigateByUrl('/user');
   }
 
   initializeTenant(tenant: ITenant) {
     console.log(tenant);
     this.userService.setEmptyOwnerProfile();
     this.userService.setTenant(tenant);
+    this._router.navigateByUrl('/admin');
   }
 
 }
