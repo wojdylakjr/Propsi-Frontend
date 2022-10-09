@@ -22,16 +22,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatMenuModule } from '@angular/material/menu';
-import { UserComponent } from './user.component';
+
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth.interceptor';
-import { UserSidenavComponent } from './user-sidenav/user-sidenav.component';
-import { UserRoutingModule } from './user-routing.module';
+import { UserRoutingModule } from './owner-routing.module';
+import { OwnerComponent } from './owner.component';
+import { OwnerSidenavComponent } from './owner-sidenav/owner-sidenav.component';
 
 @NgModule({
   declarations: [
-    UserComponent,
-    UserSidenavComponent
+    OwnerComponent,
+    OwnerSidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +58,6 @@ import { UserRoutingModule } from './user-routing.module';
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [UserComponent]
+  bootstrap: [OwnerComponent]
 })
-export class UserModule { }
+export class OwnerModule { }

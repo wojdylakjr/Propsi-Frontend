@@ -1,0 +1,16 @@
+<mat-nav-list>
+
+    <h2>Owner</h2>
+    <p>{{owner.name}}</p>
+
+
+    <a mat-list-item routerLink="/users" routerLinkActive="list-item-active">
+        <mat-icon>manage_accounts</mat-icon> Owners
+    </a>
+    <a mat-list-item routerLink="/tenants" routerLinkActive="list-item-active">
+        <mat-icon>account_circle</mat-icon> Tenants
+    </a>
+    <a mat-list-item routerLink="/admins" routerLinkActive="list-item-active">
+        <mat-icon>room</mat-icon> Properties
+    </a>
+</mat-nav-list>

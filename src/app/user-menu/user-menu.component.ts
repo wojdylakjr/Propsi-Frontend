@@ -21,18 +21,19 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //fix it
   initializeOwner(owner: IOwner) {
     console.log(owner);
     this.userService.setEmptyTenantProfile();
     this.userService.setOwner(owner);
-    this._router.navigateByUrl('/user');
+    this._router.navigateByUrl('/owner');
   }
 
   initializeTenant(tenant: ITenant) {
     console.log(tenant);
     this.userService.setEmptyOwnerProfile();
     this.userService.setTenant(tenant);
-    this._router.navigateByUrl('/admin');
+    this._router.navigateByUrl('/tenant');
   }
 
 }

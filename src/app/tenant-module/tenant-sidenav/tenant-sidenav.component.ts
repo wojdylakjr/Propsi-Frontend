@@ -8,11 +8,11 @@ import { UserManagementService } from 'src/app/services/user.management.service'
 // import {MatSideList} from '@angular/material'
 
 @Component({
-  selector: 'user-sidenav',
-  templateUrl: './user-sidenav.component.html',
-  styleUrls: ['./user-sidenav.component.scss']
+  selector: 'tenant-sidenav',
+  templateUrl: './tenant-sidenav.component.html',
+  styleUrls: ['./tenant-sidenav.component.scss']
 })
-export class UserSidenavComponent implements OnInit {
+export class TenantSidenavComponent implements OnInit {
   owner: IOwner = {};
   tenant: ITenant = {};
 

@@ -18,8 +18,10 @@ export class SidenavComponent implements OnInit {
   constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {
+    console.log('On init')
     this.userService.owner.subscribe(owner => { this.owner = owner });
     this.userService.tenant.subscribe(tenant => { this.tenant = tenant });
+    console.log(this.owner)
   }
 
 }
