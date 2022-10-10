@@ -19,7 +19,6 @@ export class OwnerSidenavComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.owner.subscribe(owner => { this.owner = owner });
-    this.userService.tenant.subscribe(tenant => { this.tenant = tenant });
     console.log('On init: ')
     console.log(this.owner);
   }

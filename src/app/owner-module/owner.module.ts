@@ -28,11 +28,13 @@ import { AuthInterceptor } from '../auth.interceptor';
 import { UserRoutingModule } from './owner-routing.module';
 import { OwnerComponent } from './owner.component';
 import { OwnerSidenavComponent } from './owner-sidenav/owner-sidenav.component';
+import { PropertyComponent } from './property/property.component';
 
 @NgModule({
   declarations: [
     OwnerComponent,
-    OwnerSidenavComponent
+    OwnerSidenavComponent,
+    PropertyComponent
   ],
   imports: [
     BrowserModule,

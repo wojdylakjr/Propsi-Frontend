@@ -46,8 +46,8 @@ import { OwnerModule } from './owner-module/owner.module';
   ],
   imports: [
     // UserModule,
-    // AdminModule,
-    // OwnerModule,
+    AdminModule,
+    OwnerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

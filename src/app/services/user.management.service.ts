@@ -13,12 +13,12 @@ import { IUser } from "../models/user.model";
 })
 export class UserManagementService {
     private _user: IUser = {};
-    readonly user: Subject<IUser> = new Subject<IUser>();
+    readonly user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
     private _owner: IUser = {};
-    readonly owner: Subject<IUser> = new Subject<IUser>();
+    readonly owner: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
-    
+
     private _tenant: IUser = {};
     readonly tenant: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
