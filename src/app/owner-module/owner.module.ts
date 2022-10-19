@@ -22,19 +22,22 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table'
 
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth.interceptor';
 import { UserRoutingModule } from './owner-routing.module';
 import { OwnerComponent } from './owner.component';
 import { OwnerSidenavComponent } from './owner-sidenav/owner-sidenav.component';
-import { PropertyComponent } from './property/property.component';
+import { PropertyComponent } from './properties/properties/property.component';
+import { AddPropertyComponent } from './properties/add-property/add-property.component';
 
 @NgModule({
   declarations: [
     OwnerComponent,
     OwnerSidenavComponent,
-    PropertyComponent
+    PropertyComponent,
+    AddPropertyComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { PropertyComponent } from './property/property.component';
     MatListModule,
     MatSidenavModule,
     MatMenuModule,
+    MatTableModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule

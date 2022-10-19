@@ -12,8 +12,6 @@ import { UserManagementService } from 'src/app/services/user.management.service'
 })
 export class OwnerSidenavComponent implements OnInit {
   owner: IOwner = {};
-  tenant: ITenant = {};
-
   constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {

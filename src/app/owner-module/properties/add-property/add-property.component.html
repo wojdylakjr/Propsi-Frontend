@@ -1,0 +1,40 @@
+<p>add-property works!</p>
+<div class="containerDiv">
+    <form class="example-form" [formGroup]="addPropertyForm" (ngSubmit)="SaveProperty()">
+
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> Property Name</mat-label>
+            <input matInput placeholder="Property Name" formControlName="name">
+        </mat-form-field>
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Premises</mat-label>
+            <input matInput placeholder="Premises" formControlName="premises">
+        </mat-form-field> -->
+        <div formArrayName="premises">
+            <div *ngFor="let premis of premises().controls; let premisesIndex=index">
+                <div [formGroupName]="premisesIndex">
+                    {{premisesIndex + 1}} Premises :
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label> Premises Name</mat-label>
+                        <input matInput placeholder="Premises Name" formControlName="name">
+                    </mat-form-field>
+
+                    <button mat-raised-button color="warn" (click)="removePromisesFromProperty(premisesIndex)">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button type="button" mat-raised-button color="accent" (click)="addPremisesToProperty()">
+            Add new premises
+        </button>
+
+
+
+        <div class="example-button-row" style="margin: 2px">
+            <button mat-raised-button color="primary">Save property</button>
+        </div>
+
+    </form>
+</div>
