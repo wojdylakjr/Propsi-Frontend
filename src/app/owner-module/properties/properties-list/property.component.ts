@@ -13,7 +13,7 @@ export class PropertyComponent implements OnInit {
   owner: IOwner = {};
 
   properties!: IProperty[];
-  displayColumns: string[] = ["id", "name", "premises"]
+  displayColumns: string[] = ["id", "name", "premises", "action"]
 
   constructor(private propertyService: PropertyService, private userService: UserManagementService,) { }
 
@@ -39,8 +39,8 @@ export class PropertyComponent implements OnInit {
   RemoveProperty(arg0: any) {
     throw new Error('Method not implemented.');
   }
-  EditProperty(arg0: any) {
-    throw new Error('Method not implemented.');
+  openProperty(propertyId: number) {
+    console.log(propertyId);
   }
   AddNewProperty(arg0: string) {
     throw new Error('Method not implemented.');

@@ -29,15 +29,17 @@ import { AuthInterceptor } from '../auth.interceptor';
 import { UserRoutingModule } from './owner-routing.module';
 import { OwnerComponent } from './owner.component';
 import { OwnerSidenavComponent } from './owner-sidenav/owner-sidenav.component';
-import { PropertyComponent } from './properties/properties/property.component';
+import { PropertyComponent } from './properties/properties-list/property.component';
 import { AddPropertyComponent } from './properties/add-property/add-property.component';
+import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
 
 @NgModule({
   declarations: [
     OwnerComponent,
     OwnerSidenavComponent,
     PropertyComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    PropertyDetailComponent
   ],
   imports: [
     BrowserModule,
