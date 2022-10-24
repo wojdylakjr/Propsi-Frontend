@@ -15,7 +15,7 @@ export class PropertyComponent implements OnInit {
   properties!: IProperty[];
   displayColumns: string[] = ["id", "name", "premises", "action"]
 
-  constructor(private propertyService: PropertyService, private userService: UserManagementService,) { }
+  constructor(private propertyService: PropertyService, private userService: UserManagementService) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });

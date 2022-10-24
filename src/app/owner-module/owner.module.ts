@@ -32,6 +32,8 @@ import { OwnerSidenavComponent } from './owner-sidenav/owner-sidenav.component';
 import { PropertyComponent } from './properties/properties-list/property.component';
 import { AddPropertyComponent } from './properties/add-property/add-property.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
+import { AddRentalComponent } from './rentals/add-rental/add-rental.component';
+import { RentalListComponent } from './rentals/rental-list/rental-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { PropertyDetailComponent } from './properties/property-detail/property-d
     OwnerSidenavComponent,
     PropertyComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    RentalListComponent,
+    AddRentalComponent
   ],
   imports: [
     BrowserModule,

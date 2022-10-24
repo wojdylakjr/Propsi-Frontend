@@ -1,0 +1,29 @@
+<p>add-rental works!</p>
+
+<div class="containerDiv">
+    <form class="example-form" [formGroup]="addRentalForm" (ngSubmit)="saveRental()">
+
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tenant Id</mat-label>
+            <input matInput placeholder="Tenant id" formControlName="tenantId">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Premises Id</mat-label>
+            <input matInput placeholder="Premises id" formControlName="premisesId">
+        </mat-form-field>
+
+
+
+        <div class="example-button-row" style="margin: 2px">
+            <button mat-raised-button color="primary">Create new</button>
+        </div>
+
+    </form>
+</div>
