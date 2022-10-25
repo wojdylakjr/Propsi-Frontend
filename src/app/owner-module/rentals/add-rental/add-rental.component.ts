@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IOwner } from 'src/app/models/owner.model';
+import { IPremises } from 'src/app/models/premises.model';
+import { ITenant } from 'src/app/models/tenant.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { RentalService } from '../rental.service';
 
@@ -13,14 +15,20 @@ export class AddRentalComponent implements OnInit {
   addRentalForm!: FormGroup;
   //TODO: check if needed
   owner: IOwner = {};
+
+  tenants?: ITenant[];
+  premises?: IPremises[];
+
   constructor(private userService: UserManagementService, private rentalService: RentalService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });
+    this.loadTenants();
+    this.loadOwnerPremises();
     this.addRentalForm = this.formBuilder.group({
       name: [''],
       tenantId: [''],
-      premisesId: [''],
+      premisesId: ['']
     })
   }
 
@@ -39,6 +47,32 @@ export class AddRentalComponent implements OnInit {
           }
         })
     }
+  }
+
+  loadOwnerPremises() {
+    this.rentalService.getOwnerPremises(this.owner.id!)
+      .subscribe({
+        next: (response) => {
+          this.premises = response;
+          console.log("Premises readed sucsefully");
+        },
+        error: () => {
+          alert("Error while geting properties")
+        }
+      })
+  }
+
+  loadTenants() {
+    this.rentalService.getAllTenants()
+      .subscribe({
+        next: (response) => {
+          this.tenants = response;
+          console.log("Tenants readed sucsefully");
+        },
+        error: () => {
+          alert("Error while geting properties")
+        }
+      })
   }
 
 }

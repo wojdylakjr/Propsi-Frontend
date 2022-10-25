@@ -10,14 +10,23 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Tenant Id</mat-label>
-            <input matInput placeholder="Tenant id" formControlName="tenantId">
+            <mat-label>Select tenant</mat-label>
+            <mat-select formControlName="tenantId">
+                <mat-option *ngFor="let tenant of tenants" [value]="tenant.id">{{tenant | json}}</mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Premises Id</mat-label>
-            <input matInput placeholder="Premises id" formControlName="premisesId">
+            <mat-label>Select premises</mat-label>
+            <mat-select formControlName="premisesId">
+                <mat-option *ngFor="let premis of premises" [value]="premis.id">{{premis | json}}</mat-option>
+            </mat-select>
         </mat-form-field>
+        <!-- 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Rental price</mat-label>
+            <input matInput placeholder="Rental price" formControlName="rentPrice">
+        </mat-form-field> -->
 
 
 
