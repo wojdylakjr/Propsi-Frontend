@@ -1,4 +1,4 @@
-<p>add-rental works!</p>
+<h1>Add new rental</h1>
 
 <div class="containerDiv">
     <form class="example-form" [formGroup]="addRentalForm" (ngSubmit)="saveRental()">
@@ -22,13 +22,35 @@
                 <mat-option *ngFor="let premis of premises" [value]="premis.id">{{premis | json}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <!-- 
+
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Rental price</mat-label>
             <input matInput placeholder="Rental price" formControlName="rentPrice">
-        </mat-form-field> -->
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Rental period</mat-label>
 
+            <mat-date-range-input [formGroup]="addRentalForm" [rangePicker]="picker">
+                <input matStartDate formControlName="rentalStartDate" placeholder="Start date">
+                <input matEndDate formControlName="rentalEndDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <!-- <mat-error *ngIf="addRentalForm.rentalStart.hasError('matStartDateInvalid')">Invalid start date
+            </mat-error>
+            <mat-error *ngIf="addRentalForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Part of premises costs</mat-label>
+            <input matInput placeholder="Part of costs" formControlName="costsPart">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Day of each month for the payment deadline</mat-label>
+            <input matInput placeholder="Payment deadline" formControlName="paymentDay">
+        </mat-form-field>
 
         <div class="example-button-row" style="margin: 2px">
             <button mat-raised-button color="primary">Create new</button>

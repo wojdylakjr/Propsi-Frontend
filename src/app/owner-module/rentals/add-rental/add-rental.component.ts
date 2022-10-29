@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IOwner } from 'src/app/models/owner.model';
 import { IPremises } from 'src/app/models/premises.model';
 import { ITenant } from 'src/app/models/tenant.model';
@@ -15,6 +15,7 @@ export class AddRentalComponent implements OnInit {
   addRentalForm!: FormGroup;
   //TODO: check if needed
   owner: IOwner = {};
+  costsPart: number = 0;
 
   tenants?: ITenant[];
   premises?: IPremises[];
@@ -27,10 +28,16 @@ export class AddRentalComponent implements OnInit {
     this.loadOwnerPremises();
     this.addRentalForm = this.formBuilder.group({
       name: [''],
+      rentPrice: [''],
+      rentalStartDate: Date,
+      rentalEndDate: Date,
+      costsPart: [],
+      paymentDay: [],
       tenantId: [''],
       premisesId: ['']
     })
   }
+
 
 
   saveRental() {

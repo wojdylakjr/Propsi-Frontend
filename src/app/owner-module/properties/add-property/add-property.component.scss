@@ -1,8 +1,48 @@
 .mat-form-field {
-    width: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.containerDiv {
-    width: 300px;
+.form-container {
+    width: 60%;
     margin: auto;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 5px;
+    padding: 40px;
+}
+
+.group-label {
+    width: 100%;
+    background-color: #ffb7d4;
+    color: rgb(245, 30, 144);
+}
+
+.single-premises {
+    margin-left: 5%;
+    width: 50%;
+    min-width: 200px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.remove-sinlge-premises-button {
+    display: inline;
+    float: right;
+    line-height: 26px;
+}
+
+.single-permises-p {
+    display: inline;
+}
+
+.single-premises-header {
+    margin: 10px;
+}
+
+.add-new-premises-button {
+    margin-bottom: 40px;
 }

@@ -6,6 +6,10 @@ export interface IRental {
     // id?: number; //???
     name?: string;
     price?: number;
+    rentalStart?: Date;
+    rentalEnd?: Date;
+    costsPart?: number;
+    paymentDat?: number;
     tenant?: ITenant;
     premises?: IPremises;
 }

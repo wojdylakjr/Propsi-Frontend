@@ -12,7 +12,7 @@ import { RentalService } from '../rental.service';
 export class RentalListComponent implements OnInit {
   owner: IOwner = {};
   rentals!: IRental[];
-  displayColumns: string[] = ["name", "tenant", "premises", "action"]
+  displayColumns: string[] = ["name", "tenant", "premises", "rentPrice", "action"]
   constructor(private rentalService: RentalService, private userService: UserManagementService) { }
 
   ngOnInit(): void {

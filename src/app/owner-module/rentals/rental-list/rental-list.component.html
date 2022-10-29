@@ -22,6 +22,10 @@
             <th mat-header-cell *matHeaderCellDef> Premises</th>
             <td mat-cell *matCellDef="let element">{{element.premises | json}}</td>
         </ng-container>
+        <ng-container matColumnDef="rentPrice">
+            <th mat-header-cell *matHeaderCellDef> Rent price</th>
+            <td mat-cell *matCellDef="let element">{{element.rentPrice | json}}</td>
+        </ng-container>
 
 
 
