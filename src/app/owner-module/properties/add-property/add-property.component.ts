@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IOwner } from 'src/app/models/owner.model';
 import { IAddress } from 'src/app/models/address.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
@@ -14,6 +14,8 @@ import { PropertyService } from '../property.service';
 export class AddPropertyComponent implements OnInit {
   owner: IOwner = {};
   isSinglePremises = false;
+
+
 
   addPropertyForm!: FormGroup;
   constructor(private userService: UserManagementService, private propertyService: PropertyService, private formBuilder: FormBuilder) { }
@@ -30,24 +32,26 @@ export class AddPropertyComponent implements OnInit {
         streetNumber: [''],
         unitNumber: [''],
       }),
+      fixedCosts: this.formBuilder.array([]),
       premises: this.formBuilder.array([])
     })
   }
+  ;
 
+  // addresForm():FormGroup{
+  //   return this.addPropertyForm.get('address');
+  // }
+
+  //premises form
   premises(): FormArray {
     return this.addPropertyForm.get('premises') as FormArray;
   }
 
-
-  // propertyPremises(empIndex: number): FormArray {
-  //   return this.employees()
-  //     .at(empIndex)
-  //     .get('skills') as FormArray;
-  // }
-
   newPremises(): FormGroup {
     return this.formBuilder.group({
-      name: ''
+      name: '',
+      meters: this.formBuilder.array([]),
+      premisesCosts: this.formBuilder.array([])
     });
   }
 
@@ -55,8 +59,66 @@ export class AddPropertyComponent implements OnInit {
     this.premises().push(this.newPremises());
   }
 
-  removePromisesFromProperty(skillIndex: number) {
-    this.premises().removeAt(skillIndex);
+  removePromisesFromProperty(index: number) {
+    this.premises().removeAt(index);
+  }
+
+  //fixed costs form
+  fixedCosts(): FormArray {
+    return this.addPropertyForm.get('fixedCosts') as FormArray;
+  }
+
+  newFixedCost(): FormGroup {
+    return this.formBuilder.group({
+      costType: '',
+      costValue: ''
+    });
+  }
+
+  addCostToProperty() {
+    this.fixedCosts().push(this.newFixedCost());
+  }
+
+  removeCostFromProperty(index: number) {
+    this.fixedCosts().removeAt(index);
+  }
+
+  //meters in premises
+  meters(premisesIndex: number): FormArray {
+    return (<FormGroup>(<FormArray>this.addPropertyForm.controls['premises']).controls[premisesIndex]).controls['meters'] as FormArray;
+  }
+
+  newMeter(): FormGroup {
+    return this.formBuilder.group({
+      meterType: ''
+    });
+  }
+
+  addMeterToPremises(premisesIndex: number) {
+    this.meters(premisesIndex).push(this.newMeter());
+  }
+
+  removeMeterFromPremises(premisesIndex: number, index: number) {
+    this.meters(premisesIndex).removeAt(index);
+  }
+
+  //costs in premises
+  costs(premisesIndex: number): FormArray {
+    return (<FormGroup>(<FormArray>this.addPropertyForm.controls['premises']).controls[premisesIndex]).controls['premisesCosts'] as FormArray;
+  }
+
+  newCost(): FormGroup {
+    return this.formBuilder.group({
+      costType: ''
+    });
+  }
+
+  addCostToPremises(premisesIndex: number) {
+    this.costs(premisesIndex).push(this.newCost());
+  }
+
+  removeCostFromPremises(premisesIndex: number, index: number) {
+    this.costs(premisesIndex).removeAt(index);
   }
 
 

@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth.interceptor';
@@ -68,6 +69,7 @@ import { RentalListComponent } from './rentals/rental-list/rental-list.component
     MatNativeDateModule,
     MatDatepickerModule,
     MatSliderModule,
+    MatStepperModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
