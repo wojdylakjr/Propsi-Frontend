@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { JwtHelperService } from "@auth0/angular-jwt"
 import * as moment from 'moment';
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { Authority } from "../models/authorities.enum";
 import { IOwner } from "../models/owner.model";
 import { ITenant } from "../models/tenant.model";
@@ -13,13 +13,14 @@ import { IUser } from "../models/user.model";
 })
 export class UserManagementService {
     private _user: IUser = {};
-    readonly user: Subject<IUser> = new Subject<IUser>();
+    readonly user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
     private _owner: IUser = {};
-    readonly owner: Subject<IUser> = new Subject<IUser>();
+    readonly owner: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
+
 
     private _tenant: IUser = {};
-    readonly tenant: Subject<IUser> = new Subject<IUser>();
+    readonly tenant: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
     constructor(private http: HttpClient) {
     }

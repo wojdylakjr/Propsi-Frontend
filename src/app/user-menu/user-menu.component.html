@@ -22,6 +22,9 @@
 <mat-menu #owners="matMenu">
     <button mat-menu-item *ngFor="let owner of user.owners" (click)="initializeOwner(owner)">{{owner.name}}</button>
 </mat-menu>
+<!-- <mat-menu #owners="matMenu">
+    <button mat-menu-item *ngFor="let owner of user.owners" [routerLink]="['/owner', owner.id]">{{owner.name}}</button>
+</mat-menu> -->
 
 <mat-menu #tenants="matMenu">
     <button mat-menu-item *ngFor="let tenant of user.tenants " (click)="initializeTenant(tenant) ">{{tenant.name}}</button>

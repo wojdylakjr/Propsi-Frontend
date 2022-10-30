@@ -20,6 +20,7 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.intializeCurrentUser();
     this.userService.user.subscribe(user => { this.user = user })
   }
   openRegisterDialog() {

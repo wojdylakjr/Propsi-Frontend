@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { IOwner } from '../models/owner.model';
-import { ITenant } from '../models/tenant.model';
-import { UserManagementService } from '../services/user.management.service';
+import { IOwner } from 'src/app/models/owner.model';
+import { ITenant } from 'src/app/models/tenant.model';
+import { UserManagementService } from 'src/app/services/user.management.service';
+
 // import {MatSideList} from '@angular/material'
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  selector: 'admin-sidenav',
+  templateUrl: './admin-sidenav.component.html',
+  styleUrls: ['./admin-sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class AdminSidenavComponent implements OnInit {
   owner: IOwner = {};
   tenant: ITenant = {};
 
   constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {
-    console.log('On init')
     this.userService.owner.subscribe(owner => { this.owner = owner });
     this.userService.tenant.subscribe(tenant => { this.tenant = tenant });
-    console.log(this.owner)
   }
 
 }

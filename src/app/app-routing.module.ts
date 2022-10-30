@@ -1,15 +1,18 @@
-import { Host, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { OwnerComponent } from './owner-module/owner.component';
+import { TenantComponent } from './tenant-module/tenant.component';
+
 
 const routes: Routes = [
 
-   {path:'login', component:LoginDialogComponent},
-    {path:'register', component:RegisterDialogComponent},
-    {path:'', component:HomeComponent}
-];
+  { path: '', component: HomeComponent },
+  { path: 'tenant', component: TenantComponent },
+  { path: 'owner', component: OwnerComponent },
+  { path: 'admin', component: AdminComponent },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
