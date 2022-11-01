@@ -24,6 +24,8 @@ export class PropertyService {
         return this.http.get<any>("http://localhost:8080/api/owners/" + ownerId + "/properties");
     }
 
-
+    getOwnerPropertyById(ownerId: number, propertyId: number) {
+        return this.http.get<any>("http://localhost:8080/api/owners/" + ownerId + "/properties/" + propertyId);
+    }
 
 }

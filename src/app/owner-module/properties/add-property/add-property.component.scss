@@ -46,3 +46,18 @@
 .add-new-premises-button {
     margin-bottom: 40px;
 }
+
+.single-meter {
+    display: inline-block;
+    margin-left: 5%;
+    width: 50%;
+    min-width: 200px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.display-inline {
+    display: inline;
+}

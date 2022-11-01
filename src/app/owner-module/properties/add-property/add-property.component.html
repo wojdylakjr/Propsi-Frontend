@@ -94,11 +94,15 @@
                 <div class="premises" *ngIf="!isSinglePremises">
                     <h2>Premises</h2>
                     <p>Lokale w danej nieruchomosci</p>
+                    <button type="button" mat-raised-button color="accent" (click)="addPremisesToProperty()" class="add-new-premises-button">
+                        Add new premises
+                    </button>
                     <div formArrayName="premises">
                         <div *ngFor="let premis of premises().controls; let premisesIndex=index">
                             <div [formGroupName]="premisesIndex" class="single-premises">
                                 <div class="single-premises-header">
-                                    <h2 class="single-permises-p">{{premisesIndex + 1}} Premises:</h2>
+                                    <h2 class="single-permises-p">{{premises().length - premisesIndex}}. Unit:
+                                    </h2>
                                     <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removePromisesFromProperty(premisesIndex)">
                                         Remove
                                     </button>
@@ -112,22 +116,20 @@
                                     <p>Liczniki w lokalu do kotrych bedziemy dodawac odczyty</p>
                                     <div formArrayName="meters">
                                         <div *ngFor="let meter of meters(premisesIndex).controls; let meterIndex=index">
-                                            <div [formGroupName]="meterIndex" class="single-premises">
-                                                <div class="single-premises-header">
-                                                    <p class="single-permises-p">{{meterIndex + 1}} Premises:</p>
-                                                    <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removeMeterFromPremises(premisesIndex,meterIndex)">
-                                                        Remove
-                                                    </button>
-                                                </div>
-                                                <mat-form-field class="example-full-width" appearance="fill">
+                                            <div [formGroupName]="meterIndex" class="single-meter">
+                                                <p class="display-inline">{{meterIndex + 1}}.</p>
+                                                <mat-form-field class="example-full-width" class="display-inline">
                                                     <mat-label> Mater name</mat-label>
                                                     <input matInput placeholder="e.g. water, gas, electricity" formControlName="meterType">
                                                 </mat-form-field>
+                                                <button mat-icon-button color="warn" class="displayInline" (click)="removeMeterFromPremises(premisesIndex,meterIndex)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="button" mat-raised-button color="accent" (click)="addMeterToPremises(premisesIndex)" class="add-new-premises-button">
-                                        Add new meter
+                                        Add
                                     </button>
                                 </div>
                                 <div class="premises costs" *ngIf="!isSinglePremises">
@@ -137,9 +139,9 @@
                                         <div *ngFor="let cost of costs(premisesIndex).controls; let costIndex=index">
                                             <div [formGroupName]="costIndex" class="single-premises">
                                                 <div class="single-premises-header">
-                                                    <p class="single-permises-p">{{costIndex + 1}} Premises:</p>
-                                                    <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromPremises(premisesIndex,costIndex)">
-                                                        Remove
+                                                    <p class="single-permises-p">{{costIndex + 1}}.</p>
+                                                    <button mat-icon-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromPremises(premisesIndex,costIndex)">
+                                                        <mat-icon>delete</mat-icon>
                                                     </button>
                                                 </div>
                                                 <mat-form-field class="example-full-width" appearance="fill">
@@ -150,15 +152,13 @@
                                         </div>
                                     </div>
                                     <button type="button" mat-raised-button color="accent" (click)="addCostToPremises(premisesIndex)" class="add-new-premises-button">
-                                        Add new meter
+                                        Add
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="button" mat-raised-button color="accent" (click)="addPremisesToProperty()" class="add-new-premises-button">
-                        Add new premises
-                    </button>
+
                 </div>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>

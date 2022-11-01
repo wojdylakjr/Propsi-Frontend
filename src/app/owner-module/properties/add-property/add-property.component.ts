@@ -56,7 +56,8 @@ export class AddPropertyComponent implements OnInit {
   }
 
   addPremisesToProperty() {
-    this.premises().push(this.newPremises());
+    this.premises().insert(0, this.newPremises());
+    // this.premises().push(this.newPremises());
   }
 
   removePromisesFromProperty(index: number) {
