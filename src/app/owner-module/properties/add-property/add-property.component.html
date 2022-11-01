@@ -1,97 +1,4 @@
 <h1>Add new property</h1>
-<!-- <div class="form-container">
-    <h1>Property details</h1>
-    <form class="example-form" [formGroup]="addPropertyForm" (ngSubmit)="SaveProperty()">
-        <mat-form-field appearance="fill">
-            <mat-label> Property Name</mat-label>
-            <input matInput placeholder="Property Name" formControlName="name">
-        </mat-form-field>
-        <p>
-            <mat-checkbox formControlName="isSinglePremises" [(ngModel)]="isSinglePremises">Single premises property
-            </mat-checkbox>
-        </p>
-        <div class="address"></div>
-        <h2>Addres</h2>
-        <div formGroupName="address">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>City</mat-label>
-                <input matInput placeholder="City" formControlName="city">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Zip Code</mat-label>
-                <input matInput placeholder="Zip Code" formControlName="zipCode">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Street</mat-label>
-                <input matInput placeholder="Street" formControlName="street">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Street number</mat-label>
-                <input matInput placeholder="Street number" formControlName="streetNumber">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Unit number</mat-label>
-                <input matInput placeholder="Unit number" formControlName="unitNumber">
-            </mat-form-field>
-        </div>
-
-        <div class="premises">
-            <h2>Fixed costs</h2>
-            <div formArrayName="fixedCosts">
-                <div *ngFor="let cost of fixedCosts().controls; let costIndex=index">
-                    <div [formGroupName]="costIndex" class="single-premises">
-                        <div class="single-premises-header">
-                            <p class="single-permises-p">{{costIndex + 1}} Fixed cost:</p>
-                            <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromProperty(costIndex)">
-                                Remove
-                            </button>
-                        </div>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label> Cost Name</mat-label>
-                            <input matInput placeholder="Cost Name" formControlName="costType">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Monthly cost</mat-label>
-                            <input matInput placeholder="Monthly cost" formControlName="costValue">
-                        </mat-form-field>
-                    </div>
-                </div>
-            </div>
-            <button type="button" mat-raised-button color="accent" (click)="addCostToProperty()" class="add-new-premises-button">
-                Add new cost
-            </button>
-        </div>
-
-        <div class="premises" *ngIf="!isSinglePremises">
-            <h2>Premises</h2>
-            <div formArrayName="premises">
-                <div *ngFor="let premis of premises().controls; let premisesIndex=index">
-                    <div [formGroupName]="premisesIndex" class="single-premises">
-                        <div class="single-premises-header">
-                            <p class="single-permises-p">{{premisesIndex + 1}} Premises:</p>
-                            <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removePromisesFromProperty(premisesIndex)">
-                                Remove
-                            </button>
-                        </div>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label> Premises Name</mat-label>
-                            <input matInput placeholder="Premises Name" formControlName="name">
-                        </mat-form-field>
-                    </div>
-                </div>
-            </div>
-            <button type="button" mat-raised-button color="accent" (click)="addPremisesToProperty()" class="add-new-premises-button">
-                Add new premises
-            </button>
-        </div>
-        <div class="example-button-row" style="margin: 2px">
-            <button mat-raised-button color="primary">Save property</button>
-        </div>
-    </form>
-</div> -->
-
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <mat-stepper labelPosition="bottom" #stepper>
     <mat-step [stepControl]="addPropertyForm">
         <form [formGroup]="addPropertyForm">
@@ -101,7 +8,7 @@
                 <input matInput placeholder="Property Name" formControlName="name">
             </mat-form-field>
             <p>
-                <mat-checkbox formControlName="isSinglePremises" [(ngModel)]="isSinglePremises">Single premises property
+                <mat-checkbox formControlName="isSinglePremises" [(ngModel)]="isSinglePremises">Single premises property [pojedyncza nieruchomosc bez lokali]
                 </mat-checkbox>
             </p>
             <div>
@@ -121,7 +28,7 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Zip Code</mat-label>
-                    <input matInput placeholder="Zip Code" formControlName="zipCode">
+                    <input matInput placeholder="" formControlName="zipCode">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Street</mat-label>
@@ -148,6 +55,8 @@
             <ng-template matStepLabel>Property basis</ng-template>
             <div class="premises">
                 <h2>Fixed costs</h2>
+                <p>Stale koszty nieruchomosci takie jak: rata kredytu, podatek od nieruchomosci, oplata administracyjna itd.
+                </p>
                 <div formArrayName="fixedCosts">
                     <div *ngFor="let cost of fixedCosts().controls; let costIndex=index">
                         <div [formGroupName]="costIndex" class="single-premises">
@@ -159,11 +68,11 @@
                             </div>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label> Cost Name</mat-label>
-                                <input matInput placeholder="Cost Name" formControlName="costType">
+                                <input matInput placeholder="e.g. installment, property tax" formControlName="costType">
                             </mat-form-field>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Monthly cost</mat-label>
-                                <input matInput placeholder="Monthly cost" formControlName="costValue">
+                                <input matInput type="number" placeholder="Monthly cost" formControlName="costValue">
                             </mat-form-field>
                         </div>
                     </div>
@@ -184,6 +93,7 @@
                 <ng-template matStepLabel>Add new premises</ng-template>
                 <div class="premises" *ngIf="!isSinglePremises">
                     <h2>Premises</h2>
+                    <p>Lokale w danej nieruchomosci</p>
                     <div formArrayName="premises">
                         <div *ngFor="let premis of premises().controls; let premisesIndex=index">
                             <div [formGroupName]="premisesIndex" class="single-premises">
@@ -195,10 +105,11 @@
                                 </div>
                                 <mat-form-field class="example-full-width" appearance="fill">
                                     <mat-label> Premises Name</mat-label>
-                                    <input matInput placeholder="Premises Name" formControlName="name">
+                                    <input matInput placeholder="e.g. Flat 1" formControlName="name">
                                 </mat-form-field>
                                 <div class="meters" *ngIf="!isSinglePremises">
                                     <h2>Meters</h2>
+                                    <p>Liczniki w lokalu do kotrych bedziemy dodawac odczyty</p>
                                     <div formArrayName="meters">
                                         <div *ngFor="let meter of meters(premisesIndex).controls; let meterIndex=index">
                                             <div [formGroupName]="meterIndex" class="single-premises">
@@ -209,8 +120,8 @@
                                                     </button>
                                                 </div>
                                                 <mat-form-field class="example-full-width" appearance="fill">
-                                                    <mat-label> Premises Name</mat-label>
-                                                    <input matInput placeholder="Premises Name" formControlName="meterType">
+                                                    <mat-label> Mater name</mat-label>
+                                                    <input matInput placeholder="e.g. water, gas, electricity" formControlName="meterType">
                                                 </mat-form-field>
                                             </div>
                                         </div>
@@ -220,7 +131,8 @@
                                     </button>
                                 </div>
                                 <div class="premises costs" *ngIf="!isSinglePremises">
-                                    <h2>Monthly cost</h2>
+                                    <h2>Monthly costs</h2>
+                                    <p>Miesieczne koszty lokalu np. z faktur za media</p>
                                     <div formArrayName="premisesCosts">
                                         <div *ngFor="let cost of costs(premisesIndex).controls; let costIndex=index">
                                             <div [formGroupName]="costIndex" class="single-premises">
@@ -232,7 +144,7 @@
                                                 </div>
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label> Premises Name</mat-label>
-                                                    <input matInput placeholder="Premises Name" formControlName="costType">
+                                                    <input matInput placeholder="e.g. the Internet, water, electrcity" formControlName="costType">
                                                 </mat-form-field>
                                             </div>
                                         </div>

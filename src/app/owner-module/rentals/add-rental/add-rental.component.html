@@ -12,20 +12,21 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Select tenant</mat-label>
             <mat-select formControlName="tenantId">
-                <mat-option *ngFor="let tenant of tenants" [value]="tenant.id">{{tenant | json}}</mat-option>
+                <mat-option *ngFor="let tenant of tenants" [value]="tenant.id">{{tenant.name}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Select premises</mat-label>
             <mat-select formControlName="premisesId">
-                <mat-option *ngFor="let premis of premises" [value]="premis.id">{{premis | json}}</mat-option>
+                <mat-option *ngFor="let premis of premises" [value]="premis.id">{{premis.name}} - {{premis.property?.name}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Rental price</mat-label>
-            <input matInput placeholder="Rental price" formControlName="rentPrice">
+            <mat-label>Monthly rental price</mat-label>
+            <input matInput type="number" placeholder="Rental price" formControlName="rentPrice">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -44,12 +45,12 @@
             <mat-error *ngIf="addRentalForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Part of premises costs</mat-label>
-            <input matInput placeholder="Part of costs" formControlName="costsPart">
+            <mat-label>Part of the premises monthly costs paid by the tenant</mat-label>
+            <input matInput type="number" placeholder="e.g. 0.5, 0.33" formControlName="costsPart">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Day of each month for the payment deadline</mat-label>
-            <input matInput placeholder="Payment deadline" formControlName="paymentDay">
+            <input matInput type="number" placeholder="e.g. 1, 10, 31" formControlName="paymentDay">
         </mat-form-field>
 
         <div class="example-button-row" style="margin: 2px">

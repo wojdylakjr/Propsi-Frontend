@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OwnerComponent } from './owner.component';
+import { PremisesListComponent } from './premises/premises-list/premises-list.component';
 import { AddPropertyComponent } from './properties/add-property/add-property.component';
 import { PropertyComponent } from './properties/properties-list/property.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
@@ -18,7 +19,9 @@ const userRoutes: Routes = [
       { path: 'owner/properties/add', component: AddPropertyComponent },
       { path: 'owner/properties/:id', component: PropertyDetailComponent },
       { path: 'owner/rentals', component: RentalListComponent },
-      { path: 'owner/rentals/add', component: AddRentalComponent }
+      { path: 'owner/rentals/add', component: AddRentalComponent },
+      { path: 'owner/premises', component: PremisesListComponent }
+
     ]
   }
 

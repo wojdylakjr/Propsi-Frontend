@@ -38,6 +38,9 @@ import { AddPropertyComponent } from './properties/add-property/add-property.com
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
 import { AddRentalComponent } from './rentals/add-rental/add-rental.component';
 import { RentalListComponent } from './rentals/rental-list/rental-list.component';
+import { PremisesListComponent } from './premises/premises-list/premises-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { RentalListComponent } from './rentals/rental-list/rental-list.component
     AddPropertyComponent,
     PropertyDetailComponent,
     RentalListComponent,
-    AddRentalComponent
+    AddRentalComponent,
+    PremisesListComponent
+
+
   ],
   imports: [
     BrowserModule,

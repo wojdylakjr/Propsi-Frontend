@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { IOwner } from 'src/app/models/owner.model';
+import { IPremises } from 'src/app/models/premises.model';
 import { IProperty } from 'src/app/models/property.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
-import { PropertyService } from '../property.service';
+import { PropertyService } from '../../properties/property.service';
+import { PremisesService } from '../premises.service';
 
 @Component({
-  selector: 'app-property',
-  templateUrl: './property.component.html',
-  styleUrls: ['./property.component.scss']
+  selector: 'app-premises-list',
+  templateUrl: './premises-list.component.html',
+  styleUrls: ['./premises-list.component.scss']
 })
-export class PropertyComponent implements OnInit {
+export class PremisesListComponent implements OnInit {
   owner: IOwner = {};
 
-  properties!: IProperty[];
-  displayColumns: string[] = ["id", "name", "premises", "address", "city", "action"]
+  premises!: IPremises[];
+  displayColumns: string[] = ["id", "name", "property", "action"]
 
-  constructor(private propertyService: PropertyService, private userService: UserManagementService) { }
+  constructor(private premisesService: PremisesService, private userService: UserManagementService) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });
@@ -24,17 +26,18 @@ export class PropertyComponent implements OnInit {
 
 
   getOwnerProperties() {
-    this.propertyService.getOwnerProperties(this.owner.id!)
+    this.premisesService.getAllOwnerPremises(this.owner.id!)
       .subscribe({
         next: (response) => {
-          this.properties = response;
-          console.log("Property saved succsefully");
+          this.premises = response;
+          console.log("Premises read succsefully");
         },
         error: () => {
-          alert("Error while geting properties")
+          alert("Error while geting premises")
         }
       })
   }
+
 
   RemoveProperty(arg0: any) {
     throw new Error('Method not implemented.');
