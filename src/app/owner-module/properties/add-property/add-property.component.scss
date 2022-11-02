@@ -48,16 +48,22 @@
 }
 
 .single-meter {
-    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin-left: 5%;
-    width: 50%;
+    width: fit-content;
     min-width: 200px;
-    border: 1px solid rgb(182, 182, 182);
-    border-radius: 5px;
-    padding: 15px;
     margin: 15px;
+    .horizontal-item {
+        margin: 0 0.5rem 0 0;
+    }
 }
 
 .display-inline {
     display: inline;
+}
+
+.width-auto {
+    width: auto;
 }

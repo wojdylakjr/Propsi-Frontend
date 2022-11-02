@@ -117,12 +117,12 @@
                                     <div formArrayName="meters">
                                         <div *ngFor="let meter of meters(premisesIndex).controls; let meterIndex=index">
                                             <div [formGroupName]="meterIndex" class="single-meter">
-                                                <p class="display-inline">{{meterIndex + 1}}.</p>
-                                                <mat-form-field class="example-full-width" class="display-inline">
+                                                <p class="horizontal-item">{{meterIndex + 1}}.</p>
+                                                <mat-form-field class="example-full-width width-auto">
                                                     <mat-label> Mater name</mat-label>
                                                     <input matInput placeholder="e.g. water, gas, electricity" formControlName="meterType">
                                                 </mat-form-field>
-                                                <button mat-icon-button color="warn" class="displayInline" (click)="removeMeterFromPremises(premisesIndex,meterIndex)">
+                                                <button mat-icon-button color="warn" (click)="removeMeterFromPremises(premisesIndex,meterIndex)">
                                                     <mat-icon>delete</mat-icon>
                                                 </button>
                                             </div>
@@ -137,17 +137,15 @@
                                     <p>Miesieczne koszty lokalu np. z faktur za media</p>
                                     <div formArrayName="premisesCosts">
                                         <div *ngFor="let cost of costs(premisesIndex).controls; let costIndex=index">
-                                            <div [formGroupName]="costIndex" class="single-premises">
-                                                <div class="single-premises-header">
-                                                    <p class="single-permises-p">{{costIndex + 1}}.</p>
-                                                    <button mat-icon-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromPremises(premisesIndex,costIndex)">
-                                                        <mat-icon>delete</mat-icon>
-                                                    </button>
-                                                </div>
-                                                <mat-form-field class="example-full-width" appearance="fill">
+                                            <div [formGroupName]="costIndex" class="single-meter">
+                                                <p class="horizontal-item">{{costIndex + 1}}.</p>
+                                                <mat-form-field class="example-full-width width-auto">
                                                     <mat-label> Premises Name</mat-label>
                                                     <input matInput placeholder="e.g. the Internet, water, electrcity" formControlName="costType">
                                                 </mat-form-field>
+                                                <button mat-icon-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromPremises(premisesIndex,costIndex)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
