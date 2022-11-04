@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IOwner } from 'src/app/models/owner.model';
+import { IPremises } from 'src/app/models/premises.model';
 import { IProperty } from 'src/app/models/property.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { PropertyService } from '../property.service';
@@ -12,9 +13,14 @@ import { PropertyService } from '../property.service';
 })
 export class PropertyDetailComponent implements OnInit {
 
+
+
   propertyId = 0;
   owner: IOwner = {};
   property: IProperty = {};
+  premises!: IPremises[];
+  premisesDisplayColumns: string[] = ["id", "name", "status", "action"];
+  fixedCostsDisplayColumns: string[] = ["id", "costType", "costValue", "action"];
   constructor(private route: ActivatedRoute, private propertyService: PropertyService, private userService: UserManagementService) { }
 
   ngOnInit(): void {
@@ -23,6 +29,7 @@ export class PropertyDetailComponent implements OnInit {
       console.log('The id of this route is: ', params['id']);
       this.propertyId = params['id'];
       this.getOwnerPropertyById(this.propertyId);
+
     });
   }
 
@@ -31,12 +38,19 @@ export class PropertyDetailComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.property = response;
+          this.premises = response.premises;
           console.log("Property saved succsefully");
         },
         error: () => {
           alert("Error while geting properties")
         }
       })
+  }
+  RemoveProperty(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+  RemoveFixedCost(arg0: any) {
+    throw new Error('Method not implemented.');
   }
 
 }
