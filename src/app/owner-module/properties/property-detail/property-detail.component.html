@@ -1,96 +1,108 @@
-<p>property-detail works with id: {{propertyId}}!</p>
-<p>{{property | json}}</p>
-<h1>{{property.name}}</h1>
+<div class="container">
+    <p>property-detail works with id: {{propertyId}}!</p>
+    <p>{{property | json}}</p>
+    <h1>{{property.name}}</h1>
 
-<div class="column">
-    <div class="mat-elevation-z8-address">
-        <div style="display: flex;">
-            <h2 style="margin: 2%;">Address</h2>
-            <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Edit</a>
+    <div class="column">
+        <div class="mat-elevation-z8-address">
+            <div style="display: flex;">
+                <h2 style="margin: 2%;">Address</h2>
+                <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Edit</a>
+            </div>
+            <div *ngIf="this.property.address !== undefined">
+                <div *ngIf="this.property.address.unitNumber !== undefined">
+                    <p>{{this.property.address!.street}} {{this.property.address!.streetNumber}}
+                    </p>
+                </div>
+                <div *ngIf="this.property.address.unitNumber === undefined">
+                    <p>{{this.property.address!.street}} {{this.property.address!.streetNumber}}/{{this.property.address!.unitNumber}}
+                    </p>
+                </div>
+                <p>{{this.property.address!.zipCode}} {{this.property.address!.city}}</p>
+            </div>
         </div>
-        <div *ngIf="this.property.address !== undefined">
-            <div *ngIf="this.property.address.unitNumber !== undefined">
-                <p>{{this.property.address!.street}} {{this.property.address!.streetNumber}}
-                </p>
+        <div class="mat-elevation-z8-fixedCosts">
+            <div style="display: flex;">
+                <h2 style="margin: 2%;">Fixed costs</h2>
+                <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Add</a>
             </div>
-            <div *ngIf="this.property.address.unitNumber === undefined">
-                <p>{{this.property.address!.street}} {{this.property.address!.streetNumber}}/{{this.property.address!.unitNumber}}
-                </p>
-            </div>
-            <p>{{this.property.address!.zipCode}} {{this.property.address!.city}}</p>
+            <table mat-table [dataSource]="property.fixedCosts!" matSort class="mat-elevation-z8-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="costType">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                    <td mat-cell *matCellDef="let element">{{element.costType}}</td>
+                </ng-container>
+                <ng-container matColumnDef="costValue">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Value</th>
+                    <td mat-cell *matCellDef="let element">{{element.costValue}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div>
+                            <button mat-icon-button color="primary" (click)="removePremisesFromProperty()">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="removePremisesFromProperty()">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="fixedCostsDisplayColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: fixedCostsDisplayColumns;"></tr>
+            </table>
         </div>
     </div>
-    <div class="mat-elevation-z8-fixedCosts">
-        <div style="display: flex;">
-            <h2 style="margin: 2%;">Fixed costs</h2>
-            <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Create New</a>
+
+    <div class="column">
+        <div class="mat-elevation-z8-premises">
+            <div style="display: flex;">
+                <h2 style="margin: 2%;">Premises</h2>
+                <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Add</a>
+            </div>
+            <table mat-table [dataSource]="property.premises!" matSort class="mat-elevation-z8-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                    <td mat-cell *matCellDef="let element">Free</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div>
+                            <!-- <a mat-raised-button [routerLink]="[element.id]" color="primary">View</a> -->
+                            <button mat-icon-button color="primary" (click)="removePremisesFromProperty()">
+                                <mat-icon>visibility</mat-icon>
+                            </button>
+
+                            <button mat-icon-button color="warn" (click)="removePremisesFromProperty()">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="premisesDisplayColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: premisesDisplayColumns;"></tr>
+            </table>
         </div>
-        <table mat-table [dataSource]="property.fixedCosts!" matSort class="mat-elevation-z8-table">
-
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
-                <td mat-cell *matCellDef="let element">{{element.id}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="costType">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-                <td mat-cell *matCellDef="let element">{{element.costType}}</td>
-            </ng-container>
-            <ng-container matColumnDef="costValue">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Value</th>
-                <td mat-cell *matCellDef="let element">{{element.costValue}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Action</th>
-                <td mat-cell *matCellDef="let element">
-                    <div>
-                        <a mat-raised-button [routerLink]="[element.id]" color="primary">View</a>
-                        <a mat-raised-button (click)="RemoveFixedCost(element.id)" color="accent">Delete</a>
-                    </div>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="fixedCostsDisplayColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: fixedCostsDisplayColumns;"></tr>
-        </table>
-    </div>
-</div>
-
-<div class="column">
-    <div class="mat-elevation-z8-premises">
-        <div style="display: flex;">
-            <h2 style="margin: 2%;">Premises</h2>
-            <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%; ">Create New</a>
-        </div>
-        <table mat-table [dataSource]="property.premises!" matSort class="mat-elevation-z8-table">
-
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
-                <td mat-cell *matCellDef="let element">{{element.id}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-                <td mat-cell *matCellDef="let element">{{element.name}}</td>
-            </ng-container>
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-                <td mat-cell *matCellDef="let element">Free</td>
-            </ng-container>
-
-            <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Action</th>
-                <td mat-cell *matCellDef="let element">
-                    <div>
-                        <a mat-raised-button [routerLink]="[element.id]" color="primary">View</a>
-                        <a mat-raised-button (click)="RemoveProperty(element.id)" color="accent">Delete</a>
-                    </div>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="premisesDisplayColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: premisesDisplayColumns;"></tr>
-        </table>
     </div>
 </div>

@@ -15,7 +15,7 @@ export class PremisesListComponent implements OnInit {
   owner: IOwner = {};
 
   premises!: IPremises[];
-  displayColumns: string[] = ["id", "name", "property", "action"]
+  displayColumns: string[] = ["id", "name", "property", "status", "action"]
 
   constructor(private premisesService: PremisesService, private userService: UserManagementService) { }
 

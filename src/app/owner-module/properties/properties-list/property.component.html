@@ -1,6 +1,7 @@
 <div class="mat-elevation-z8">
-    <div>
-        <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%">Create New</a>
+    <div style="display: flex;">
+        <h1 style="margin: 2%; text-align:center">Properties</h1>
+        <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%;">Create New</a>
     </div>
     <table mat-table [dataSource]="properties" matSort class="mat-elevation-z8-table">
 
@@ -35,9 +36,17 @@
             <th mat-header-cell *matHeaderCellDef> Action</th>
             <td mat-cell *matCellDef="let element">
                 <div>
-                    <a mat-raised-button [routerLink]="[element.id]" color="primary">View</a>
+                    <!-- <a mat-raised-button [routerLink]="[element.id]" color="primary">View</a> -->
                     <!-- <a mat-raised-button (click)="openProperty(element.id)" color="primary">View</a>  -->
-                    <a mat-raised-button (click)="RemoveProperty(element.id)" color="accent">Delete</a>
+                    <!-- <a mat-raised-button (click)="RemoveProperty(element.id)" color="accent">Delete</a> -->
+
+                    <button mat-icon-button color="primary" [routerLink]="[element.id]">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+
+                    <button mat-icon-button color="warn" (click)="RemoveProperty(element.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </div>
             </td>
         </ng-container>

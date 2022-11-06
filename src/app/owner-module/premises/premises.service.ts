@@ -10,8 +10,11 @@ export class PremisesService {
     }
 
     getAllOwnerPremises(ownerId: any) {
-        return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/premises')
+        return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/premises');
     }
 
+    getOwnerPremisesById(ownerId: number, premisesId: number) {
+        return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/premises/' + premisesId);
+    }
 
 }

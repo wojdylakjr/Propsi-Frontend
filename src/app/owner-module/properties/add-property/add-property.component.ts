@@ -14,7 +14,8 @@ import { PropertyService } from '../property.service';
 export class AddPropertyComponent implements OnInit {
   owner: IOwner = {};
   isSinglePremises = false;
-
+  premisesDisplayColumns: string[] = ["#", "name"];
+  fixedCostsDisplayColumns: string[] = ["#", "costType", "costValue"];
 
 
   addPropertyForm!: FormGroup;
@@ -35,6 +36,8 @@ export class AddPropertyComponent implements OnInit {
       fixedCosts: this.formBuilder.array([]),
       premises: this.formBuilder.array([])
     })
+    //initial form with one premises ?
+    // this.addPremisesToProperty();
   }
   ;
 

@@ -18,7 +18,6 @@ export class PropertyDetailComponent implements OnInit {
   propertyId = 0;
   owner: IOwner = {};
   property: IProperty = {};
-  premises!: IPremises[];
   premisesDisplayColumns: string[] = ["id", "name", "status", "action"];
   fixedCostsDisplayColumns: string[] = ["id", "costType", "costValue", "action"];
   constructor(private route: ActivatedRoute, private propertyService: PropertyService, private userService: UserManagementService) { }
@@ -38,7 +37,6 @@ export class PropertyDetailComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.property = response;
-          this.premises = response.premises;
           console.log("Property saved succsefully");
         },
         error: () => {
@@ -52,5 +50,7 @@ export class PropertyDetailComponent implements OnInit {
   RemoveFixedCost(arg0: any) {
     throw new Error('Method not implemented.');
   }
-
+  removePremisesFromProperty() {
+    throw new Error('Method not implemented.');
+  }
 }

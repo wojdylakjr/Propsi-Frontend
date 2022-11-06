@@ -39,6 +39,7 @@ import { PropertyDetailComponent } from './properties/property-detail/property-d
 import { AddRentalComponent } from './rentals/add-rental/add-rental.component';
 import { RentalListComponent } from './rentals/rental-list/rental-list.component';
 import { PremisesListComponent } from './premises/premises-list/premises-list.component';
+import { PremisesDetailComponent } from './premises/premises-detail/premises-detail.component';
 
 
 
@@ -51,7 +52,8 @@ import { PremisesListComponent } from './premises/premises-list/premises-list.co
     PropertyDetailComponent,
     RentalListComponent,
     AddRentalComponent,
-    PremisesListComponent
+    PremisesListComponent,
+    PremisesDetailComponent
 
 
   ],
