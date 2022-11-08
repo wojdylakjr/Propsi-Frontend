@@ -7,6 +7,7 @@ import { AddPropertyComponent } from './properties/add-property/add-property.com
 import { PropertyComponent } from './properties/properties-list/property.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
 import { AddRentalComponent } from './rentals/add-rental/add-rental.component';
+import { RentalDetailComponent } from './rentals/rental-detail/rental-detail.component';
 import { RentalListComponent } from './rentals/rental-list/rental-list.component';
 
 
@@ -20,9 +21,11 @@ const userRoutes: Routes = [
       { path: 'owner/properties/add', component: AddPropertyComponent },
       { path: 'owner/properties/:id', component: PropertyDetailComponent },
       { path: 'owner/premises/:id', component: PremisesDetailComponent },
+      { path: 'owner/premises', component: PremisesListComponent },
       { path: 'owner/rentals', component: RentalListComponent },
       { path: 'owner/rentals/add', component: AddRentalComponent },
-      { path: 'owner/premises', component: PremisesListComponent }
+      { path: 'owner/rentals/:tenantId/:premisesId', component: RentalDetailComponent }
+
 
     ]
   }

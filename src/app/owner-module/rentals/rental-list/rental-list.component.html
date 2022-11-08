@@ -1,7 +1,8 @@
 <div class="mat-elevation-z8">
     <div style="display: flex;">
         <h1 style="margin: 2%; text-align:center">Rentals</h1>
-        <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%;">Create New</a>
+        <a mat-raised-button color="primary" routerLink="add" routerLinkActive="list-item-active" style="margin: 2%;">Create
+      New</a>
     </div>
     <table mat-table [dataSource]="rentals" matSort class="mat-elevation-z8-table">
 
@@ -33,7 +34,7 @@
             <th mat-header-cell *matHeaderCellDef> Action</th>
             <td mat-cell *matCellDef="let element">
                 <div>
-                    <a mat-raised-button [routerLink]="[owner.id]" color="primary">View</a>
+                    <a mat-raised-button [routerLink]="[element.tenant.id, element.premises.id]" color="primary">View</a>
                     <!-- <a mat-raised-button (click)="openProperty(element.id)" color="primary">View</a>  -->
                     <!-- <a mat-raised-button (click)="RemoveProperty(element.id)" color="accent">Delete</a> -->
                 </div>

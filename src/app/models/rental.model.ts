@@ -3,13 +3,13 @@ import { IProperty } from "./property.model";
 import { ITenant } from "./tenant.model";
 
 export interface IRental {
-    // id?: number; //???
-    name?: string;
-    price?: number;
-    rentalStart?: Date;
-    rentalEnd?: Date;
-    costsPart?: number;
-    paymentDat?: number;
-    tenant?: ITenant;
-    premises?: IPremises;
+  // id?: number; //???
+  name?: string;
+  rentPrice?: number;
+  rentalStartDate?: Date;
+  rentalEndDate?: Date;
+  costsPart?: number;
+  paymentDay?: number;
+  tenant?: ITenant;
+  premises?: IPremises;
 }

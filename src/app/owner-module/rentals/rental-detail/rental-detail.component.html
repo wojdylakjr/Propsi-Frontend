@@ -1,0 +1,11 @@
+<div class="mat-elevation-z8">
+    <p>Rental: {{rental.name}}</p>
+    <p>Tenant: {{rental.tenant | json}}</p>
+    <p>Premises: {{rental.premises | json}}</p>
+    <p>Price: {{rental.rentPrice | currency:'PLN '}}</p>
+    <p>Start date: {{rental.rentalStartDate| date}}</p>
+    <p>End date: {{rental.rentalEndDate | date}}</p>
+    <p>Part of costs: {{rental.costsPart}}</p>
+    <p>Payment deadline day: {{rental.paymentDay}}</p>
+
+</div>
