@@ -17,12 +17,8 @@ export class AddMeterMeasurementDialogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // s = this.data2;
-    // this.data2 = this.data2;
     console.log(this.data);
-    console.log(this.data.premisesId);
-    console.log(this.data.ownerId);
-    this.loadPremises();
+    this.loadPremisesMeters();
     this.addForm = this.formBuilder.group({
       value: [''],
       unit: [''],
@@ -30,7 +26,7 @@ export class AddMeterMeasurementDialogComponent implements OnInit {
       meterId: ['']
     })
   }
-  loadPremises() {
+  loadPremisesMeters() {
     console.log(this.data)
     this.premisesService.getAllMetersForOnePremises(this.data.ownerId, this.data.premisesId)
       .subscribe({
@@ -63,20 +59,3 @@ export class AddMeterMeasurementDialogComponent implements OnInit {
   }
 }
 
-
-  // registerUser() {
-  //   console.log(Authority.Admin);
-  //   console.log(this.registerForm.value);
-  //   if (this.registerForm.valid) {
-  //     this.api.registerUser(this.registerForm.value)
-  //       .subscribe({
-  //         next: (response) => {
-  //           console.log("User saved succsefully");
-  //           this.dialogRef.close();
-  //         },
-  //         error: () => {
-  //           alert("Error while saving new user")
-  //         }
-  //       })
-  //   }
-  // }

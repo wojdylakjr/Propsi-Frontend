@@ -30,8 +30,16 @@ export class PremisesService {
     return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/premises/' + premisesId + '/meters');
   }
 
+  getAllCostsForOnePremises(ownerId: number, premisesId: number) {
+    return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/premises/' + premisesId + '/premisesCosts');
+  }
+
   addNewMeterMeasurement(data: any) {
     return this.http.post<any>("http://localhost:8080/api/meterMeasurements", data);
+  }
+
+  addNewPremisesCostDetail(data: any) {
+    return this.http.post<any>("http://localhost:8080/api/premisesCostDetail", data);
   }
 
 }

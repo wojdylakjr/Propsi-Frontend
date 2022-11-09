@@ -7,6 +7,7 @@ import { IPremises } from 'src/app/models/premises.model';
 import { IPremisesCostDetails } from 'src/app/models/premisesCostDetail.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { AddMeterMeasurementDialogComponent } from '../add-meter-measurement-dialog/add-meter-measurement-dialog.component';
+import { AddPremisesCostDetailDialogComponent } from '../add-premises-cost-detail-dialog/add-premises-cost-detail-dialog.component';
 import { PremisesService } from '../premises.service';
 
 @Component({
@@ -93,4 +94,18 @@ export class PremisesDetailComponent implements OnInit {
       },
     });
   }
+
+  openPremisesCostDetailAddDialog() {
+    this.dialog.open(AddPremisesCostDetailDialogComponent, {
+      width: '30%',
+
+      data: {
+        premisesId: this.premisesId,
+        ownerId: this.owner.id,
+      },
+    });
+
+
+  }
+
 }
