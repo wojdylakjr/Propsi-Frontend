@@ -41,6 +41,8 @@ import { RentalListComponent } from './rentals/rental-list/rental-list.component
 import { PremisesListComponent } from './premises/premises-list/premises-list.component';
 import { PremisesDetailComponent } from './premises/premises-detail/premises-detail.component';
 import { RentalDetailComponent } from './rentals/rental-detail/rental-detail.component';
+import { AddMeterMeasurementDialogComponent } from './premises/add-meter-measurement-dialog/add-meter-measurement-dialog.component';
+import { AddPremisesCostDetailDialogComponent } from './premises/add-premises-cost-detail-dialog/add-premises-cost-detail-dialog.component';
 
 
 
@@ -55,7 +57,9 @@ import { RentalDetailComponent } from './rentals/rental-detail/rental-detail.com
     AddRentalComponent,
     PremisesListComponent,
     PremisesDetailComponent,
-    RentalDetailComponent
+    RentalDetailComponent,
+    AddMeterMeasurementDialogComponent,
+    AddPremisesCostDetailDialogComponent
 
 
   ],
