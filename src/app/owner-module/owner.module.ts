@@ -43,6 +43,8 @@ import { PremisesDetailComponent } from './premises/premises-detail/premises-det
 import { RentalDetailComponent } from './rentals/rental-detail/rental-detail.component';
 import { AddMeterMeasurementDialogComponent } from './premises/add-meter-measurement-dialog/add-meter-measurement-dialog.component';
 import { AddPremisesCostDetailDialogComponent } from './premises/add-premises-cost-detail-dialog/add-premises-cost-detail-dialog.component';
+import { BillsListComponent } from './bills/bills-list/bills-list.component';
+import { BillsDetailComponent } from './bills/bills-detail/bills-detail.component';
 
 
 
@@ -59,7 +61,9 @@ import { AddPremisesCostDetailDialogComponent } from './premises/add-premises-co
     PremisesDetailComponent,
     RentalDetailComponent,
     AddMeterMeasurementDialogComponent,
-    AddPremisesCostDetailDialogComponent
+    AddPremisesCostDetailDialogComponent,
+    BillsListComponent,
+    BillsDetailComponent
 
 
   ],

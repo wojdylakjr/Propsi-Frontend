@@ -1,9 +1,9 @@
 import { IPremises } from "./premises.model";
-import { IProperty } from "./property.model";
+import { IRentalId } from "./rentalId.model";
 import { ITenant } from "./tenant.model";
 
 export interface IRental {
-  // id?: number; //???
+  id?: IRentalId; //???
   name?: string;
   rentPrice?: number;
   rentalStartDate?: Date;

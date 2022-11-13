@@ -5,6 +5,10 @@
     <p>{{premises | json}}</p>
     <h1>{{premises.name}}</h1>
     <h2>Status: Free</h2>
+    <div style="display: flex;">
+        <a mat-raised-button color="primary" (click)="generateBillsForOnePremises()">Generate bills for
+      all rentals within this premises</a>
+    </div>
     <div class="column">
         <div class="mat-elevation-z8-premisesCosts">
             <div style="display: flex;">

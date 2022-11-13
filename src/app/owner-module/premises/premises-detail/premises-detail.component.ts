@@ -6,6 +6,7 @@ import { IOwner } from 'src/app/models/owner.model';
 import { IPremises } from 'src/app/models/premises.model';
 import { IPremisesCostDetails } from 'src/app/models/premisesCostDetail.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
+import { BillService } from '../../bills/bills.service';
 import { AddMeterMeasurementDialogComponent } from '../add-meter-measurement-dialog/add-meter-measurement-dialog.component';
 import { AddPremisesCostDetailDialogComponent } from '../add-premises-cost-detail-dialog/add-premises-cost-detail-dialog.component';
 import { PremisesService } from '../premises.service';
@@ -16,6 +17,7 @@ import { PremisesService } from '../premises.service';
   styleUrls: ['./premises-detail.component.scss']
 })
 export class PremisesDetailComponent implements OnInit {
+
   premisesId = 0;
 
 
@@ -28,7 +30,7 @@ export class PremisesDetailComponent implements OnInit {
   metersMeasurementDisplayColumns: string[] = ["id", "meter", "value", "date", "unit", "action"];
   premisesCostsDetailsDisplayColumns: string[] = ["id", "premisesCost", "costValue", "date", "unit", "action"];
 
-  constructor(private route: ActivatedRoute, private premisesService: PremisesService, private userService: UserManagementService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private premisesService: PremisesService, private billService: BillService, private userService: UserManagementService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });
@@ -104,8 +106,17 @@ export class PremisesDetailComponent implements OnInit {
         ownerId: this.owner.id,
       },
     });
-
-
   }
 
+  generateBillsForOnePremises() {
+    this.billService.generateBillsForOnePremises(this.owner.id!, this.premisesId)
+      .subscribe({
+        next: (response) => {
+          console.log("bill generated");
+        },
+        error: () => {
+          console.log("Error while generating bills")
+        }
+      })
+  }
 }

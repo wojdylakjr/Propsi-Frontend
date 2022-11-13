@@ -12,6 +12,7 @@ export class RentalService {
   constructor(private http: HttpClient) {
   }
 
+  //rentalDto
   create(data: any) {
     return this.http.post<any>("http://localhost:8080/api/rentals", data);
   }
@@ -33,6 +34,10 @@ export class RentalService {
     return this.http.get<any>("http://localhost:8080/api/owners/" + ownerId + "/rentals/" + tenantId + "/" + premisesId);
   }
 
+  //bills moved to bill service
+  getAllBillsForRental(ownerId: number, tenantId: number, premisesId: number) {
+    return this.http.get<any>("http://localhost:8080/api/owners/" + ownerId + "/rentals/" + tenantId + "/" + premisesId + "/bills");
+  }
 
 
 }
