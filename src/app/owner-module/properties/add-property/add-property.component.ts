@@ -5,6 +5,8 @@ import { IAddress } from 'src/app/models/address.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { OwnerService } from '../../owner.service';
 import { PropertyService } from '../property.service';
+import { Router } from '@angular/router';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 @Component({
   selector: 'app-add-property',
@@ -19,7 +21,7 @@ export class AddPropertyComponent implements OnInit {
 
 
   addPropertyForm!: FormGroup;
-  constructor(private userService: UserManagementService, private propertyService: PropertyService, private formBuilder: FormBuilder) { }
+  constructor(private snackBarService: SnackBarService, private router: Router, private userService: UserManagementService, private propertyService: PropertyService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });
@@ -133,6 +135,8 @@ export class AddPropertyComponent implements OnInit {
       this.propertyService.saveProperty(this.addPropertyForm.value, this.owner.id!)
         .subscribe({
           next: (response) => {
+            this.router.navigate(['/', 'owner', 'properties']);
+            this.snackBarService.openSnackBar("Property saved succsefully");
             console.log("Property saved succsefully");
           },
           error: () => {

@@ -5,6 +5,7 @@ import { IMeterMeasurement } from 'src/app/models/meterMeasurement.model';
 import { IOwner } from 'src/app/models/owner.model';
 import { IPremises } from 'src/app/models/premises.model';
 import { IPremisesCostDetails } from 'src/app/models/premisesCostDetail.model';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { BillService } from '../../bills/bills.service';
 import { AddMeterMeasurementDialogComponent } from '../add-meter-measurement-dialog/add-meter-measurement-dialog.component';
@@ -30,7 +31,7 @@ export class PremisesDetailComponent implements OnInit {
   metersMeasurementDisplayColumns: string[] = ["id", "meter", "value", "date", "unit", "action"];
   premisesCostsDetailsDisplayColumns: string[] = ["id", "premisesCost", "costValue", "date", "unit", "action"];
 
-  constructor(private route: ActivatedRoute, private premisesService: PremisesService, private billService: BillService, private userService: UserManagementService, private dialog: MatDialog) { }
+  constructor(private snackBarService: SnackBarService, private route: ActivatedRoute, private premisesService: PremisesService, private billService: BillService, private userService: UserManagementService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.owner.subscribe(owner => { this.owner = owner });
@@ -87,24 +88,29 @@ export class PremisesDetailComponent implements OnInit {
   }
 
   openMeterMeasurementAddDialog() {
-    this.dialog.open(AddMeterMeasurementDialogComponent, {
+    let dialogRef = this.dialog.open(AddMeterMeasurementDialogComponent, {
       width: '30%',
-
       data: {
         premisesId: this.premisesId,
         ownerId: this.owner.id,
       },
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllMetersMeasurmentsForOnePremises();
+    });
   }
 
   openPremisesCostDetailAddDialog() {
-    this.dialog.open(AddPremisesCostDetailDialogComponent, {
+    let dialogRef = this.dialog.open(AddPremisesCostDetailDialogComponent, {
       width: '30%',
-
       data: {
         premisesId: this.premisesId,
         ownerId: this.owner.id,
       },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllCostsDetailsForOnePremises();
     });
   }
 
@@ -113,6 +119,7 @@ export class PremisesDetailComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log("bill generated");
+          this.snackBarService.openSnackBar("Bills are generated");
         },
         error: () => {
           console.log("Error while generating bills")

@@ -63,8 +63,8 @@
                             <div class="single-premises-header">
                                 <p class="single-permises-p">{{costIndex + 1}} Fixed cost:</p>
                                 <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromProperty(costIndex)">
-                                    Remove
-                                </button>
+                  Remove
+                </button>
                             </div>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label> Cost Name</mat-label>
@@ -78,8 +78,8 @@
                     </div>
                 </div>
                 <button type="button" mat-raised-button color="accent" (click)="addCostToProperty()" class="add-new-premises-button">
-                    Add new cost
-                </button>
+          Add new cost
+        </button>
             </div>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
@@ -95,8 +95,8 @@
                     <h2>Premises</h2>
                     <p>Lokale w danej nieruchomosci</p>
                     <button type="button" mat-raised-button color="accent" (click)="addPremisesToProperty()" class="add-new-premises-button">
-                        Add new premises
-                    </button>
+            Add new premises
+          </button>
                     <div formArrayName="premises">
                         <div *ngFor="let premis of premises().controls; let premisesIndex=index">
                             <div [formGroupName]="premisesIndex" class="single-premises">
@@ -104,8 +104,8 @@
                                     <h2 class="single-permises-p">{{premises().length - premisesIndex}}. Unit:
                                     </h2>
                                     <button mat-raised-button color="warn" class="remove-sinlge-premises-button" (click)="removePromisesFromProperty(premisesIndex)">
-                                        Remove
-                                    </button>
+                    Remove
+                  </button>
                                 </div>
                                 <mat-form-field class="example-full-width" appearance="fill">
                                     <mat-label> Premises Name</mat-label>
@@ -123,14 +123,14 @@
                                                     <input matInput placeholder="e.g. water, gas, electricity" formControlName="meterType">
                                                 </mat-form-field>
                                                 <button mat-icon-button color="warn" (click)="removeMeterFromPremises(premisesIndex,meterIndex)">
-                                                    <mat-icon>delete</mat-icon>
-                                                </button>
+                          <mat-icon>delete</mat-icon>
+                        </button>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="button" mat-raised-button color="accent" (click)="addMeterToPremises(premisesIndex)" class="add-new-premises-button">
-                                        Add
-                                    </button>
+                    Add
+                  </button>
                                 </div>
                                 <div class="premises costs" *ngIf="!isSinglePremises">
                                     <h2>Monthly costs</h2>
@@ -144,14 +144,14 @@
                                                     <input matInput placeholder="e.g. the Internet, water, electrcity" formControlName="costType">
                                                 </mat-form-field>
                                                 <button mat-icon-button color="warn" class="remove-sinlge-premises-button" (click)="removeCostFromPremises(premisesIndex,costIndex)">
-                                                    <mat-icon>delete</mat-icon>
-                                                </button>
+                          <mat-icon>delete</mat-icon>
+                        </button>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="button" mat-raised-button color="accent" (click)="addCostToPremises(premisesIndex)" class="add-new-premises-button">
-                                        Add
-                                    </button>
+                    Add
+                  </button>
                                 </div>
                             </div>
                         </div>
@@ -247,14 +247,15 @@
                         <tr mat-row *matRowDef="let row; columns: premisesDisplayColumns;"></tr>
                     </table>
                 </div>
-                <div class="footer">
-                    <div class="example-button-row" style="margin: 2px; float: right;">
-                        <button mat-raised-button color="primary">Save property</button>
-                    </div>
-                    <div style="float: right;">
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button (click)="stepper.reset()">Reset</button>
-                    </div>
+
+            </div>
+            <div class="footer">
+                <div class="example-button-row" style="margin: 2px; float: right;">
+                    <button mat-raised-button color="primary">Save property</button>
+                </div>
+                <div style=" float: right; ">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset() ">Reset</button>
                 </div>
             </div>
             <!-- #################################################################################################################################################################### -->

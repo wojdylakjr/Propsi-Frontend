@@ -3,15 +3,17 @@
 //     flex-direction: column;
 //     height: 100%;
 // }
-
 // mat-drawer {
 //     width: 260px;
 // }
-
 // mat-drawer-container {
 //     height: 100%;
 // }
-
 // mat-drawer {
 //     background: #3f51b5;
 // }
+::ng-deep .snack-style {
+    display: flex;
+    background-color: white;
+    color: rgb(139, 17, 186);
+}

@@ -48,6 +48,7 @@ import { BillsDetailComponent } from './bills/bills-detail/bills-detail.componen
 
 
 
+
 @NgModule({
   declarations: [
     OwnerComponent,
@@ -63,7 +64,7 @@ import { BillsDetailComponent } from './bills/bills-detail/bills-detail.componen
     AddMeterMeasurementDialogComponent,
     AddPremisesCostDetailDialogComponent,
     BillsListComponent,
-    BillsDetailComponent
+    BillsDetailComponent,
 
 
   ],

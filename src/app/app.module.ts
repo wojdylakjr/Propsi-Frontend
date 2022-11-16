@@ -31,6 +31,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AdminModule } from './admin/admin.module';
 import { TenantModule } from './tenant-module/tenant.module';
 import { OwnerModule } from './owner-module/owner.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+
 
 
 
@@ -42,7 +45,8 @@ import { OwnerModule } from './owner-module/owner.module';
     NavComponent,
     HomeComponent,
     SidenavComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    SnackBarComponent
   ],
   imports: [
     // UserModule,
@@ -60,6 +64,7 @@ import { OwnerModule } from './owner-module/owner.module';
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatMenuModule,
     ReactiveFormsModule,
     FormsModule,
