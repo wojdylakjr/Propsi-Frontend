@@ -1,9 +1,9 @@
-<h2>Generated: {{bill.date | date}}</h2>
+<h2 style="margin: 2%;">Generated at: {{bill.date | date}}</h2>
 <div class="mat-elevation-z8">
 
     <div style="display: flex;">
         <h2 style="margin: 2%;">Bills Items</h2>
-        <!-- <a mat-raised-button color="primary" (click)="openAddBillDialog()" style="margin: 2%; ">Add</a> -->
+        <a mat-raised-button color="primary" (click)="createPayment()" style="margin: 2%; ">Pay with PayU</a>
     </div>
     <table mat-table [dataSource]="bill.billLineItems!" matSort class="mat-elevation-z8-table">
 
@@ -45,4 +45,19 @@
         <tr mat-row *matRowDef="let row; columns: BillLineItemsDisplayColumns;"></tr>
     </table>
     <h2 style="margin: 2%;">Total price: {{bill.totalPrice}} PLN</h2>
+</div>
+<div class="mat-elevation-z8">
+    <div *ngIf="bill.payment?.status" style="margin: 2%;">
+        <h1>Payment</h1>
+        <h2>Id: {{bill.payment?.id}}</h2>
+        <h2>Status: {{bill.payment?.status}}</h2>
+        <h2>Date: {{bill.payment?.date |date:'medium' }}</h2>
+        <h2>Amount: {{bill.payment?.amount |currency:' ' }}</h2>
+        <h2>Currency: {{bill.payment?.currencyCode}}</h2>
+        <h2>Pay method: {{bill.payment?.payMethod}}</h2>
+    </div>
+    <div *ngIf="!bill.payment?.status" style="margin: 2%;">
+        <h1>Payment not added</h1>
+    </div>
+
 </div>

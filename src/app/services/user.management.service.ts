@@ -9,59 +9,59 @@ import { ITenant } from "../models/tenant.model";
 import { IUser } from "../models/user.model";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class UserManagementService {
-    private _user: IUser = {};
-    readonly user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
+  private _user: IUser = {};
+  readonly user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
-    private _owner: IUser = {};
-    readonly owner: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
+  private _owner: IUser = {};
+  readonly owner: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
 
-    private _tenant: IUser = {};
-    readonly tenant: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
+  private _tenant: IUser = {};
+  readonly tenant: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    intializeCurrentUser() {
-        this.http.get("http://localhost:8080/api/account").subscribe({
-            next: (response: any) => {
-                this._user = response;
-                this.user.next(this._user);
-            },
-            error: () => {
-                console.log('couldnt get cuurent user in home init')
-            }
-        });;;
-    }
-    cleanAfterLogout() {
-        this.setEmptyUser();
-        this.setEmptyOwnerProfile();
-        this.setEmptyTenantProfile();
-    }
+  intializeCurrentUser() {
+    this.http.get("http://localhost:8080/api/account").subscribe({
+      next: (response: any) => {
+        this._user = response;
+        this.user.next(this._user);
+      },
+      error: () => {
+        console.log('couldnt get cuurent user in home init')
+      }
+    });;;
+  }
+  cleanAfterLogout() {
+    this.setEmptyUser();
+    this.setEmptyOwnerProfile();
+    this.setEmptyTenantProfile();
+  }
 
-    setEmptyUser() {
-        this.user.next({});
-    }
+  setEmptyUser() {
+    this.user.next({});
+  }
 
-    setEmptyOwnerProfile() {
-        this.owner.next({});
-    }
+  setEmptyOwnerProfile() {
+    this.owner.next({});
+  }
 
-    setEmptyTenantProfile() {
-        this.tenant.next({});
-    }
+  setEmptyTenantProfile() {
+    this.tenant.next({});
+  }
 
-    setOwner(owner: IOwner) {
-        this._owner = owner;
-        this.owner.next(this._owner);
-    }
+  setOwner(owner: IOwner) {
+    this._owner = owner;
+    this.owner.next(this._owner);
+  }
 
-    setTenant(teanat: ITenant) {
-        this._tenant = teanat;
-        this.tenant.next(this._tenant);
-    }
+  setTenant(teanat: ITenant) {
+    this._tenant = teanat;
+    this.tenant.next(this._tenant);
+  }
 
 }

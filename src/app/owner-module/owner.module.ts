@@ -45,6 +45,8 @@ import { AddMeterMeasurementDialogComponent } from './premises/add-meter-measure
 import { AddPremisesCostDetailDialogComponent } from './premises/add-premises-cost-detail-dialog/add-premises-cost-detail-dialog.component';
 import { BillsListComponent } from './bills/bills-list/bills-list.component';
 import { BillsDetailComponent } from './bills/bills-detail/bills-detail.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddPayUCredentialsDialogComponent } from './profile/add-pay-ucredentials-dialog/add-pay-ucredentials-dialog.component';
 
 
 
@@ -65,6 +67,8 @@ import { BillsDetailComponent } from './bills/bills-detail/bills-detail.componen
     AddPremisesCostDetailDialogComponent,
     BillsListComponent,
     BillsDetailComponent,
+    ProfileComponent,
+    AddPayUCredentialsDialogComponent,
 
 
   ],

@@ -1,9 +1,9 @@
 <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>account_circle</mat-icon>
+  <mat-icon>account_circle</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
     <p mat-menu-item>Hi {{user.firstName}}</p>
-    <!-- <p mat-menu-item>{{user.email}}</p> -->
+    <button mat-menu-item [routerLink]="['/']">User account</button>
     <div *ngIf=" user.authorities?.includes(authority.Admin)">
         <button mat-menu-item>Account {{user.email}}</button>
     </div>

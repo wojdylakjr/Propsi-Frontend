@@ -1,0 +1,14 @@
+<p>profile works!</p>
+<p>{{owner|json}}</p>
+<h1>{{owner.name}}</h1>
+<div *ngIf="owner.payUClientId">
+    <h2>PayU Credentials</h2>
+    <h2>Client Id: {{owner.payUClientId}}</h2>
+    <h2>Client secret: {{owner.payUClientSecret}}</h2>
+    <a mat-raised-button color="primary" (click)="openAddPayUDialog()" style="margin: 2%;">Edit PayU</a>
+</div>
+<div *ngIf="!owner.payUClientId">
+    <h2>Add PayU account</h2>
+    <a mat-raised-button color="primary" (click)="openAddPayUDialog()" style="margin: 2%;">Add
+    PayU</a>
+</div>

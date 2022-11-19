@@ -25,5 +25,9 @@ export class BillService {
   generateBillsForOnePremises(ownerId: number, premisesId: number) {
     return this.http.post<any>("http://localhost:8080/api/owners/" + ownerId + "/premises/" + premisesId + "/bills", null);
   }
+  createPayment(ownerId: number, billId: number) {
+    return this.http.post<any>("http://localhost:8080/api/owners/" + ownerId + "/bills/" + billId + "/pay", null);
+  }
 }
+
 

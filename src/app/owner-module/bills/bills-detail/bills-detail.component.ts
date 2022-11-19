@@ -48,5 +48,16 @@ export class BillsDetailComponent implements OnInit {
   editBillItem(arg0: any) {
     throw new Error('Method not implemented.');
   }
-
+  createPayment() {
+    this.billService.createPayment(this.owner.id!, this.billId)
+      .subscribe({
+        next: (response) => {
+          window.open(response.redirectUri, "_blank");
+          console.log("Payment created succsefully");
+        },
+        error: () => {
+          console.log("Error while creating payment")
+        }
+      })
+  }
 }

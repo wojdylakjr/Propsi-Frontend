@@ -5,6 +5,7 @@ import { BillsListComponent } from './bills/bills-list/bills-list.component';
 import { OwnerComponent } from './owner.component';
 import { PremisesDetailComponent } from './premises/premises-detail/premises-detail.component';
 import { PremisesListComponent } from './premises/premises-list/premises-list.component';
+import { ProfileComponent } from './profile/profile.component';
 import { AddPropertyComponent } from './properties/add-property/add-property.component';
 import { PropertyComponent } from './properties/properties-list/property.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
@@ -28,7 +29,8 @@ const userRoutes: Routes = [
       { path: 'owner/rentals/add', component: AddRentalComponent },
       { path: 'owner/rentals/:tenantId/:premisesId', component: RentalDetailComponent },
       { path: 'owner/bills', component: BillsListComponent },
-      { path: 'owner/bills/:id', component: BillsDetailComponent }
+      { path: 'owner/bills/:id', component: BillsDetailComponent },
+      { path: 'owner/profile', component: ProfileComponent }
     ]
   }
 

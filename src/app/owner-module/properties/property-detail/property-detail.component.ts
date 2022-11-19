@@ -28,7 +28,6 @@ export class PropertyDetailComponent implements OnInit {
       console.log('The id of this route is: ', params['id']);
       this.propertyId = params['id'];
       this.getOwnerPropertyById(this.propertyId);
-
     });
   }
 

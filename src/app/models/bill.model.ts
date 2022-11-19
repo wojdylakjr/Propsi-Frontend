@@ -1,4 +1,5 @@
 import { IBillLineItem } from "./billLineItem.model";
+import { IPayment } from "./payment.model";
 import { IRental } from "./rental.model";
 
 export interface IBill {
@@ -7,4 +8,5 @@ export interface IBill {
   date?: Date;
   rental?: IRental;
   billLineItems?: IBillLineItem[] | null;
+  payment?: IPayment;
 }
