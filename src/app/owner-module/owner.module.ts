@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 
 import { AppRoutingModule } from '../app-routing.module';
@@ -84,6 +85,7 @@ import { AddPayUCredentialsDialogComponent } from './profile/add-pay-ucredential
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
     MatListModule,
     MatSidenavModule,
     MatMenuModule,
