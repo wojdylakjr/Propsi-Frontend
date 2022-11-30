@@ -26,7 +26,7 @@ export class UserMenuComponent implements OnInit {
     console.log(owner);
     this.userService.setEmptyTenantProfile();
     this.userService.setOwner(owner);
-    this._router.navigateByUrl('/owner');
+    this._router.navigateByUrl('/owner/profile');
   }
 
   initializeTenant(tenant: ITenant) {

@@ -16,4 +16,8 @@ export class OwnerService {
   addPayUCredentials(data: any, ownerId: number) {
     return this.http.patch<any>("http://localhost:8080/api/owners/" + ownerId, data);
   }
+
+  getUsersForOwner(ownerId: any) {
+    return this.http.get<any>('http://localhost:8080/api/owners/' + ownerId + '/users')
+  }
 }
