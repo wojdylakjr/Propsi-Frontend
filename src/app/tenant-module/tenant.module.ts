@@ -26,11 +26,13 @@ import { TenantComponent } from './tenant.component';
 import { AuthInterceptor } from '../auth.interceptor';
 import { TenantSidenavComponent } from './tenant-sidenav/tenant-sidenav.component';
 import { TenantRoutingModule } from './tenant-routing.module';
+import { RentalListComponent } from './rentals/rental-list/rental-list.component';
 
 @NgModule({
   declarations: [
     TenantComponent,
-    TenantSidenavComponent
+    TenantSidenavComponent,
+    RentalListComponent
   ],
   imports: [
     BrowserModule,

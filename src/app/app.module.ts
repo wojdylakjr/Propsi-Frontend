@@ -56,6 +56,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     // UserModule,
     AdminModule,
     OwnerModule,
+    TenantModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
