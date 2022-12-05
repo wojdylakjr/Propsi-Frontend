@@ -2,24 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IBill } from 'src/app/models/bill.model';
 import { IOwner } from 'src/app/models/owner.model';
+import { ITenant } from 'src/app/models/tenant.model';
 import { UserManagementService } from 'src/app/services/user.management.service';
 import { BillService } from '../bills.service';
 
 @Component({
-  selector: 'app-bills-detail',
-  templateUrl: './bills-detail.component.html',
-  styleUrls: ['./bills-detail.component.scss']
+  selector: 'app-bill-detail',
+  templateUrl: './bill-detail.component.html',
+  styleUrls: ['./bill-detail.component.scss']
 })
-export class BillsDetailComponent implements OnInit {
+export class BillDetailComponent implements OnInit {
 
   billId = 0;
-  owner: IOwner = {};
+  tenant: ITenant = {};
   bill: IBill = {};
   BillLineItemsDisplayColumns: string[] = ["id", "name", "price", "unit", "action"];
   constructor(private route: ActivatedRoute, private billService: BillService, private userService: UserManagementService) { }
 
   ngOnInit(): void {
-    this.userService.owner.subscribe(owner => { this.owner = owner });
+    this.userService.tenant.subscribe(tenant => { this.tenant = tenant });
     this.route.params.subscribe(params => {
       console.log('The id of this route is: ', params['id']);
       this.billId = params['id'];
@@ -29,7 +30,7 @@ export class BillsDetailComponent implements OnInit {
   }
 
   getBillById() {
-    this.billService.getOwnerPropertyById(this.owner.id!, this.billId)
+    this.billService.getTenantBillById(this.tenant.id!, this.billId)
       .subscribe({
         next: (response) => {
           this.bill = response;
@@ -47,7 +48,7 @@ export class BillsDetailComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   createPayment() {
-    this.billService.createPayment(this.owner.id!, this.billId)
+    this.billService.createPayment(this.tenant.id!, this.billId)
       .subscribe({
         next: (response) => {
           window.open(response.redirectUri, "_blank");

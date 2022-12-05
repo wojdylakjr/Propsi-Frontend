@@ -1,0 +1,64 @@
+.mat-elevation-z8 {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 2%;
+}
+
+.mat-elevation-z8-table {
+    width: 100%;
+    margin: auto;
+}
+
+.example-card {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 2%;
+    padding-left: 4%;
+    min-height: 170px;
+    // margin: 10px;
+    // margin-top: 50px;
+}
+
+.large-icon {
+    transform: scale(8);
+    position: absolute;
+    top: 80px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.icon-column {
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding: 30px;
+}
+
+.detail-card-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin: 30px;
+    // margin-top: 20px;
+}
+
+.detail-card-element {
+    text-align: center;
+}
+
+.mat-elevation-z8-meters {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+}

@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,12 +29,18 @@ import { AuthInterceptor } from '../auth.interceptor';
 import { TenantSidenavComponent } from './tenant-sidenav/tenant-sidenav.component';
 import { TenantRoutingModule } from './tenant-routing.module';
 import { RentalListComponent } from './rentals/rental-list/rental-list.component';
+import { RentalDetailComponent } from './rentals/rental-detail/rental-detail.component';
+import { BillsListComponent } from './bills/bills-list/bills-list.component';
+import { BillDetailComponent } from './bills/bill-detail/bill-detail.component';
 
 @NgModule({
   declarations: [
     TenantComponent,
     TenantSidenavComponent,
-    RentalListComponent
+    RentalListComponent,
+    RentalDetailComponent,
+    BillDetailComponent,
+    BillsListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,8 @@ import { RentalListComponent } from './rentals/rental-list/rental-list.component
     MatInputModule,
     MatSelectModule,
     MatListModule,
+    MatTableModule,
+    MatCardModule,
     MatSidenavModule,
     MatMenuModule,
     ReactiveFormsModule,
