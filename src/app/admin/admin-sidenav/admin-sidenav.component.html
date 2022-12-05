@@ -5,17 +5,17 @@
     </div> -->
 
     <!-- <div *ngIf="tenant.name"> -->
-        <h2>Tenant</h2>
-        <p>{{tenant.name}}</p>
+    <h2>Admin</h2>
+    <p>{{user.firstName}} {{user.lastName}}</p>
     <!-- </div> -->
 
-    <a mat-list-item routerLink="/users" routerLinkActive="list-item-active">
-        <mat-icon>manage_accounts</mat-icon> Owners
+    <a mat-list-item routerLink="/admin/users" routerLinkActive="list-item-active">
+        <mat-icon>manage_accounts</mat-icon> Users
     </a>
-    <a mat-list-item routerLink="/tenants" routerLinkActive="list-item-active">
+    <a mat-list-item routerLink="/admin/tenants" routerLinkActive="list-item-active">
         <mat-icon>account_circle</mat-icon> Tenants
     </a>
-    <a mat-list-item routerLink="/admins" routerLinkActive="list-item-active">
-        <mat-icon>room</mat-icon> Properties
+    <a mat-list-item routerLink="/admin/owners" routerLinkActive="list-item-active">
+        <mat-icon>room</mat-icon> Owners
     </a>
 </mat-nav-list>

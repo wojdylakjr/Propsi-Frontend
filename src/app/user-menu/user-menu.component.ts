@@ -36,4 +36,9 @@ export class UserMenuComponent implements OnInit {
     this._router.navigateByUrl('/tenant');
   }
 
+  openAdminPage() {
+    this.userService.setEmptyTenantProfile();
+    this.userService.setEmptyOwnerProfile();
+    this._router.navigateByUrl('/admin');
+  }
 }

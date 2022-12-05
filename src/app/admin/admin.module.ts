@@ -25,15 +25,23 @@ import { AdminComponent } from './admin.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth.interceptor';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { OwnersListComponent } from './owners/owners-list/owners-list.component';
+import { TenantsListComponent } from './tenants/tenants-list/tenants-list.component';
+import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminSidenavComponent
+    AdminSidenavComponent,
+    UsersListComponent,
+    OwnersListComponent,
+    TenantsListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
+    AdminRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,

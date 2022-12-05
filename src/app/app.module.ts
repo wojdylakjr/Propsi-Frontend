@@ -30,12 +30,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
-import { AdminModule } from './admin/admin.module';
 import { TenantModule } from './tenant-module/tenant.module';
 import { OwnerModule } from './owner-module/owner.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { AdminModule } from './admin/admin.module';
 
 
 

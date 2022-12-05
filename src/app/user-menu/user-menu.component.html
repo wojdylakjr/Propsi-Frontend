@@ -6,7 +6,7 @@
     <!-- <button mat-menu-item [routerLink]="['/']">User account</button> -->
     <button mat-menu-item [routerLink]="['/user']">User account</button>
     <div *ngIf=" user.authorities?.includes(authority.Admin)">
-        <button mat-menu-item>Account {{user.email}}</button>
+        <button mat-menu-item (click)="openAdminPage()">Account {{user.email}}</button>
     </div>
 
     <div *ngIf=" user.authorities?.includes(authority.Owner)">
