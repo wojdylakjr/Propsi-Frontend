@@ -22,6 +22,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { AdminComponent } from './admin.component';
+import { MatCardModule } from '@angular/material/card';
+
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth.interceptor';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
@@ -29,6 +31,8 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { OwnersListComponent } from './owners/owners-list/owners-list.component';
 import { TenantsListComponent } from './tenants/tenants-list/tenants-list.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { MatTableModule } from '@angular/material/table';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +40,15 @@ import { AdminRoutingModule } from './admin-routing.module';
     AdminSidenavComponent,
     UsersListComponent,
     OwnersListComponent,
-    TenantsListComponent
+    TenantsListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     // AppRoutingModule,
     AdminRoutingModule,
     BrowserAnimationsModule,
+    MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -51,6 +57,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     MatInputModule,
     MatSelectModule,
     MatListModule,
+    MatTableModule,
     MatSidenavModule,
     MatMenuModule,
     ReactiveFormsModule,

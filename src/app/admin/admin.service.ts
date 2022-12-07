@@ -13,6 +13,9 @@ export class AdminService {
     return this.http.get<any>('http://localhost:8080/api/admin/users/')
   }
 
+  getUserById(userId: number) {
+    return this.http.get<any>('http://localhost:8080/api/admin/users/' + userId)
+  }
 
   getAllOwners() {
     return this.http.get<any>('http://localhost:8080/api/admin/owners/')
