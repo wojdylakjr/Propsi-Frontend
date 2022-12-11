@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Authority } from '../models/authorities.enum';
+import { Authority } from '../../models/authorities.enum';
 import { RegisterService } from './register.service';
 
 

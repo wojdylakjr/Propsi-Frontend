@@ -15,26 +15,26 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 
 
-import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { RegisterDialogComponent } from './common/register-dialog/register-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import { NavComponent } from './nav/nav.component';
-import { HomeComponent } from './home/home.component';
+import { LoginDialogComponent } from './common/login-dialog/login-dialog.component';
+import { NavComponent } from './common/nav/nav.component';
+import { HomeComponent } from './common/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavComponent } from './common/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { UserMenuComponent } from './user-menu/user-menu.component';
+import { UserMenuComponent } from './common/user-menu/user-menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { TenantModule } from './tenant-module/tenant.module';
 import { OwnerModule } from './owner-module/owner.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SnackBarComponent } from './snack-bar/snack-bar.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { SnackBarComponent } from './common/snack-bar/snack-bar.component';
+import { UserDetailComponent } from './common/user-detail/user-detail.component';
 import { AdminModule } from './admin/admin.module';
 
 

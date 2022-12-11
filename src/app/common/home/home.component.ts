@@ -1,8 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { IUser } from '../models/user.model';
-import { UserManagementService } from '../services/user.management.service';
+import { AuthService } from '../../services/auth.service';
+import { IUser } from '../../models/user.model';
+import { UserManagementService } from '../../services/user.management.service';
 
 @Component({
   selector: 'app-home',

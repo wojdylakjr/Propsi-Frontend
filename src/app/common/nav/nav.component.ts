@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AuthService } from '../services/auth.service';
-import { IUser } from '../models/user.model';
-import { UserManagementService } from '../services/user.management.service';
+
+import { IUser } from '../../models/user.model';
+import { UserManagementService } from '../../services/user.management.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -40,36 +41,4 @@ export class NavComponent implements OnInit {
     console.log(" logout");
     this.authService.logout();
   }
-
-  //TODO: usunac
-  testOwner() {
-    console.log("test owner");
-    this.authService.testOwner()
-      .subscribe({
-        next: (response) => {
-
-          alert("test owner succsefully");
-
-        },
-        error: () => {
-          alert("Error while test owner");
-        }
-      })
-  }
-
-  testTenant() {
-    console.log("test tenant");
-    this.authService.testTenant()
-      .subscribe({
-        next: (response) => {
-
-          alert("test teantn succsefully");
-
-        },
-        error: () => {
-          alert("Error while test teannt");
-        }
-      })
-
-  }
-} 
+}

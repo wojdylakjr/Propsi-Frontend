@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { UserManagementService } from '../services/user.management.service';
+import { AuthService } from '../../services/auth.service';
+import { UserManagementService } from '../../services/user.management.service';
 
 
 @Component({

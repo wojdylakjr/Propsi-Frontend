@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Authority } from '../models/authorities.enum';
-import { IOwner } from '../models/owner.model';
-import { ITenant } from '../models/tenant.model';
-import { IUser } from '../models/user.model';
-import { UserManagementService } from '../services/user.management.service';
+import { Authority } from '../../models/authorities.enum';
+import { IOwner } from '../../models/owner.model';
+import { ITenant } from '../../models/tenant.model';
+import { IUser } from '../../models/user.model';
+import { UserManagementService } from '../../services/user.management.service';
 
 @Component({
   selector: 'app-user-menu',
