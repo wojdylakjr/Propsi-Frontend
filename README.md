@@ -1,4 +1,5 @@
 # PropsiFrontend
+Frontend part for Propsi application build with Angular and Angular Material library. Quick presentation of application is in demo.pdf in backend repository.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
